@@ -1,5 +1,5 @@
 const getJavaUrl = (context, params) => { // getJavaUrl
-  let url = 'http://localhost:9999/api';
+  let url = 'https://capers.herokuapp.com/api';
   let accessToken = 'abc';
   switch (context) { // eslint-disable-line  default-case
     case 'ping':
