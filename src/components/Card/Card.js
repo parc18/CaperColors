@@ -18,7 +18,7 @@ export default class Card extends Component {
         <div >
           {this.props.name}
         </div>
-        <img src={this.props.img} alt="EventImage" />
+        <img className={style.eventImg} src={this.props.img} alt="EventImage" />
         <div >
           {this.props.city} |
         </div>

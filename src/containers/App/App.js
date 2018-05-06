@@ -95,8 +95,8 @@ export default class App extends Component {
         <Helmet {...config.app.head} />
         <Navbar fixedTop>
           <Navbar.Header className={styles.Allheader}>
-            <ButtonToolbar>
-              <DropdownButton title="All Cities" id="dropdown-size-medium">
+            <ButtonToolbar className={styles.cityDropDown}>
+              <DropdownButton title="All Cities" className={styles.cityDropDown} id="dropdown-size-medium">
                 <MenuItem eventKey="1">Delhi</MenuItem>
                 <MenuItem eventKey="2">Pune</MenuItem>
                 <MenuItem eventKey="3">Bangalore</MenuItem>
@@ -157,15 +157,6 @@ export default class App extends Component {
                 Logged in as <strong>{user.email}</strong>.
               </p>
             )}
-            <Nav navbar pullRight>
-              <NavItem
-                target="_blank"
-                title="View on Github"
-                href="https://github.com/bertho-zero/react-redux-universal-hot-example"
-              >
-                <i className="fa fa-github" />
-              </NavItem>
-            </Nav>
           </Navbar.Collapse>
         </Navbar>
 
