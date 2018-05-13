@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { LinkContainer } from 'react-router-bootstrap';
 
 export default class Card extends Component {
   static propTypes = {
@@ -14,23 +14,20 @@ export default class Card extends Component {
   render() {
     const style = require('./card.scss');
     return (
-      <div className={style.box} id={this.props.index}>
-        <div >
-          {this.props.name}
-        </div>
-        <img className={style.eventImg} src={this.props.img} alt="EventImage" />
-        <div >
-          {this.props.city} |
-        </div>
-        <div >
-          {this.props.date}
-        </div>
-        <LinkContainer to={`/eventdetails/${this.props.id}`}>
-          <div >
-            Details &#8594;
+      <Link to={`/eventdetails/${this.props.id}`}>
+        <div className={style.box} id={this.props.index}>
+          <div className={style.imgContainer}>
+            <img className={style.eventImg} src={this.props.img} alt="EventImage" />
+            <div className={style.eventName}>{this.props.name}</div>
+            <div className={style.imgFilter} />
           </div>
-        </LinkContainer>
-      </div>
+          <div className={style.contentContainer}>
+            <div>{this.props.city} |</div>
+            <div>{this.props.date}</div>
+            <div className={style.pdpDetails}>Details &#8594;</div>
+          </div>
+        </div>
+      </Link>
     );
   }
 }

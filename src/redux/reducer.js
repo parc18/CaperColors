@@ -10,7 +10,7 @@ import home from './modules/home';
 export default function createReducers(asyncReducers) {
   return {
     router: routerReducer,
-    online: (p = true) => p,
+    online: (v = true) => v,
     form,
     notifs,
     auth,

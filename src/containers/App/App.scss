@@ -1,3 +1,6 @@
+body {
+  background-color: #f6f6f6;
+}
 .app {
   .brand {
     cursor: pointer;
@@ -37,8 +40,11 @@
 .Allheader {
   background: #0B2340;
 }
-.cityDropDown{
+.cityDropDown, .cityDropDown:focus, .cityDropDown:active, .cityDropDown:hover {
   position: absolute;
-  top: 5px;
-  left: 50%;
+  top: 4px;
+  right: 20%;
+  background: transparent !important;
+  color: #fff !important;
+  border: none !important;
 }

@@ -4,6 +4,19 @@
   dd {
     margin-bottom: 15px;
   }
+  .selectGame {
+    width: auto;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    white-space: nowrap;
+    padding: 10px;
+    background-color: #fff;
+    margin-bottom: 10px;
+    span {
+      margin: 10px;
+      color: #898989;
+    }
+  }
 }
 
 .masthead {
@@ -61,4 +74,5 @@
 }
 .container {
   background: #e2e2e2;
+  padding: 0 10px;
 }
