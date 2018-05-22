@@ -190,6 +190,7 @@
     "webpack-isomorphic-tools": "^3.0.2"
   },
   "engines": {
-    "node": ">=6.9.0"
+    "node": "v9.11.1",
+    "npm": "5.6.0"
   }
 }
