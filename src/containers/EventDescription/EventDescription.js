@@ -15,36 +15,25 @@ export default class EventDescription extends Component {
   };
   state = {
     home: this.props.home.data[this.props.match.params.eventId]
-  }
+  };
   render() {
-    const { home } = this.props;
     const styles = require('./EventDescription.scss');
-    console.log(home, 'fuckssss');
     // require the logo image both from client and server
     return (
       <div className={styles.home}>
         <Helmet title="Home" />
         <div>
           <div className={styles.container}>
-            <img src={this.state.home.eventImgUrl} alt="event" />
-            <div className="mccc">
-              {this.state.home.eventName}
+            <div className={styles.eventImgContainer}>
+              <img className={styles.eventDescImg} src={this.state.home.eventImgUrl} alt="EventImage" />
+              <div className={styles.eventName}>{this.state.home.eventName}</div>
+              <div className={styles.imgFilter} />
             </div>
-            <div className="mccc">
-              {this.state.home.eventVenue}
-            </div>
-            <div className="mccc">
-              {this.state.home.date}
-            </div>
-            <div className="mccc">
-              {this.state.home.price}
-            </div>
-            <div className="mccc">
-              {this.state.home.description}
-            </div>
-            <button>
-              Book Now &#8594;
-            </button>
+            <div className="mccc">{this.state.home.eventVenue}</div>
+            <div className="mccc">{this.state.home.date}</div>
+            <div className="mccc">{this.state.home.price}</div>
+            <div className="mccc">{this.state.home.description}</div>
+            <button className={styles.eventBookStickyBtn}>Book Now &#8594;</button>
           </div>
         </div>
       </div>
