@@ -10,26 +10,12 @@ import { connect } from 'react-redux';
 }))
 export default class Home extends Component {
   static propTypes = {
-    home: PropTypes.arrayOf(PropTypes.object).isRequired,
-    match: PropTypes.arrayOf(PropTypes.array).isRequired
+    home: PropTypes.object.isRequired
+    // match: PropTypes.arrayOf(PropTypes.array).isRequired
   };
-
-  state = {
-    home: this.props.home.data,
-    eventId: this.props.match.params.eventId
-  };
-  componentWillMount() {
-    console.log(this.props);
-    console.log(this.props.home.data[this.state.eventId], 'lols');
-  }
-  componentDidMount() {
-    console.log(this.state.home);
-    console.log('yes mounted');
-  }
   render() {
     const { home } = this.props;
     const styles = require('./Home.scss');
-    console.log(home, 'fuckssss');
     // require the logo image both from client and server
     return (
       <div className={styles.home}>

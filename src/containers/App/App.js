@@ -15,7 +15,6 @@ import Nav from 'react-bootstrap/lib/Nav';
 import NavItem from 'react-bootstrap/lib/NavItem';
 import Alert from 'react-bootstrap/lib/Alert';
 import Helmet from 'react-helmet';
-import { isLoaded as isInfoLoaded, load as loadInfo } from 'redux/modules/info';
 import { isHomeLoaded as isHomeFilled, getEventsBycityId as fillHome } from 'redux/modules/home';
 import { isLoaded as isAuthLoaded, load as loadAuth, logout } from 'redux/modules/auth';
 import { Notifs } from 'components';
@@ -23,12 +22,8 @@ import config from 'config';
 
 @provideHooks({
   fetch: async ({ store: { dispatch, getState } }) => {
-    console.log(getState);
     if (!isAuthLoaded(getState())) {
       await dispatch(loadAuth()).catch(() => null);
-    }
-    if (!isInfoLoaded(getState())) {
-      await dispatch(loadInfo()).catch(() => null);
     }
     if (!isHomeFilled(getState())) {
       await dispatch(fillHome(1)).catch(() => null);

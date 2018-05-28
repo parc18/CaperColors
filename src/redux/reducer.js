@@ -6,6 +6,7 @@ import notifs from './modules/notifs';
 import counter from './modules/counter';
 import info from './modules/info';
 import home from './modules/home';
+import bookingPrices from './modules/bookevent';
 
 export default function createReducers(asyncReducers) {
   return {
@@ -21,6 +22,7 @@ export default function createReducers(asyncReducers) {
     }),
     info,
     home,
+    bookingPrices,
     ...asyncReducers
   };
 }

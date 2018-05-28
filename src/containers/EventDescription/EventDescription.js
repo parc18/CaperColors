@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-
+import { Link } from 'react-router-dom';
 import Helmet from 'react-helmet';
 import { connect } from 'react-redux';
 
@@ -33,7 +33,9 @@ export default class EventDescription extends Component {
             <div className="mccc">{this.state.home.date}</div>
             <div className="mccc">{this.state.home.price}</div>
             <div className="mccc">{this.state.home.description}</div>
-            <button className={styles.eventBookStickyBtn}>Book Now &#8594;</button>
+            <Link to={`/bookevent/${this.state.home.eventId}`}>
+              <button className={styles.eventBookStickyBtn}>Book Now &#8594;</button>
+            </Link>
           </div>
         </div>
       </div>

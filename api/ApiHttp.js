@@ -8,8 +8,12 @@ const getJavaUrl = (context, params) => { // getJavaUrl
     case 'events':
       url += `/event?city_id=${params}`;
       break;
+    case 'prices':
+      url += `/event_prices?event_id=${params}`;
+      break;
     // no default
   }
+  console.log(url, 'mofooooos');
   return {
     url,
     accessToken

@@ -1,0 +1,1 @@
+export getEventPrices from './bookEvent';
