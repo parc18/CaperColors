@@ -1,9 +1,12 @@
-const getJavaUrl = (context, params) => { // getJavaUrl
+const getJavaUrl = (context, params) => {
+  // getJavaUrl
   let url = 'https://capers.herokuapp.com/api';
-  let accessToken = 'abc';
-  switch (context) { // eslint-disable-line  default-case
+  const accessToken = 'abc';
+  switch (
+    context // eslint-disable-line  default-case
+  ) {
     case 'ping':
-      url += `/ping`;
+      url += '/ping';
       break;
     case 'events':
       url += `/event?city_id=${params}`;
@@ -13,7 +16,6 @@ const getJavaUrl = (context, params) => { // getJavaUrl
       break;
     // no default
   }
-  console.log(url, 'mofooooos');
   return {
     url,
     accessToken
@@ -22,12 +24,12 @@ const getJavaUrl = (context, params) => { // getJavaUrl
 
 export const getAPIData = (context, params, postdata, requestMethod = false) => {
   let apiCall = '';
-    apiCall = getJavaUrl(context, params);
+  apiCall = getJavaUrl(context, params);
   const { url, accessToken } = apiCall;
   try {
     return new Promise((resolve, reject) => {
       require('require-ensure-shim').shim(require);
-      require.ensure(['unirest'], (require) => {
+      require.ensure(['unirest'], require => {
         const unirest = require('unirest');
         let request;
         let method;
@@ -35,26 +37,36 @@ export const getAPIData = (context, params, postdata, requestMethod = false) => 
           if (requestMethod === 'Delete') {
             request = unirest.delete(url);
             method = 'DELETE';
-            request.headers({ Accept: 'application/json', 'Content-Type': 'application/json', Authorization: accessToken });
+            request.headers({
+              Accept: 'application/json',
+              'Content-Type': 'application/json',
+              Authorization: accessToken
+            });
           } else if (requestMethod === 'Put') {
             request = unirest.put(url);
             method = 'PUT';
             request.send(JSON.stringify(postdata));
-            request.headers({ Accept: 'application/json', 'Content-Type': 'application/json', Authorization: accessToken });
+            request.headers({
+              Accept: 'application/json',
+              'Content-Type': 'application/json',
+              Authorization: accessToken
+            });
           } else {
             request = unirest.post(url);
             method = 'POST';
             request.send(JSON.stringify(postdata));
-            request.headers({ Accept: 'application/json', 'Content-Type': 'application/json', Authorization: accessToken });
+            request.headers({
+              Accept: 'application/json',
+              'Content-Type': 'application/json',
+              Authorization: accessToken
+            });
           }
         } else {
           request = unirest.get(url);
           method = 'GET';
           request.headers({ Authorization: accessToken });
         }
-        request
-        .timeout(6000)
-        .end((res) => {
+        request.timeout(6000).end(res => {
           if (res.status !== 200 || res.error) {
             return reject(res.error);
           }
@@ -63,7 +75,7 @@ export const getAPIData = (context, params, postdata, requestMethod = false) => 
       });
     });
   } catch (err) {
-  	console.log(err);
+    console.log(err);
     return false;
   }
 };
