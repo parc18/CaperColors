@@ -1,0 +1,13 @@
+.selectGameType {
+	width: auto;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    white-space: nowrap;
+    padding: 10px;
+    background-color: #fff;
+    margin-bottom: 10px;
+    span {
+      margin: 10px;
+      color: #898989;
+    }
+}

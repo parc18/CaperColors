@@ -4,6 +4,7 @@ import Helmet from 'react-helmet';
 import { connect } from 'react-redux';
 import { provideHooks } from 'redial';
 import { getEventsPrices as prices } from 'redux/modules/bookevent';
+import gameconfig from '../../../config/gameconfig';
 
 @provideHooks({
   fetch: async ({ store: { dispatch }, match }) => {
@@ -20,23 +21,33 @@ export default class BookEvent extends Component {
   };
   render() {
     const styles = require('./BookEvent.scss');
+    const firstValue = Object.values(this.props.bookingPrices.data)[0];
+    console.log('firstValue: ', firstValue);
     // require the logo image both from client and server
     return (
       <div className={styles.home}>
         <Helmet title="Home" />
         <div>
           <div className={styles.container}>
-            {Object.keys(this.props.bookingPrices.data).map((item, index) => {
-              if (typeof item !== 'undefined') {
-                return (
+            <div className={styles.selectGameType}>
+              {Object.keys(this.props.bookingPrices.data).map((item, index) => {
+                if (typeof item !== 'undefined') {
+                  return <span>{gameconfig[item]}</span>;
+                }
+                return null;
+              })}
+            </div>
+            <div>
+              {Object.values(this.props.bookingPrices.data)[0].map((item, index) => {
+                if (typeof item !== 'undefined') {
                   <div>
-                    {' '}
-                    {item} {index}
-                  </div>
-                );
-              }
-              return null;
-            })}
+                    <span>{item.name}</span>
+                    <span>{item.desc}</span>
+                  </div>;
+                }
+                return null;
+              })}
+            </div>
           </div>
         </div>
       </div>
