@@ -14,6 +14,9 @@ const getJavaUrl = (context, params) => {
     case 'prices':
       url += `/event_prices?event_id=${params}`;
       break;
+    case 'payment':
+      url += '/book_event';
+      break;
     // no default
   }
   return {

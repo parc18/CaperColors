@@ -4,9 +4,12 @@ import Helmet from 'react-helmet';
 import { connect } from 'react-redux';
 import { provideHooks } from 'redial';
 import { getEventsPrices as prices } from 'redux/modules/bookevent';
+import { requsetPaymentUrl as getPaymentUrl } from 'redux/modules/payment';
 import gameconfig from '../../../config/gameconfig';
 
 const playerCount = [];
+let totalAmount = 0;
+
 @provideHooks({
   fetch: async ({ store: { dispatch }, match }) => {
     await dispatch(prices(match[1].match.params.eventId)).catch(() => null);
@@ -21,7 +24,8 @@ export default class BookEvent extends Component {
   static propTypes = {
     bookingPrices: PropTypes.arrayOf(PropTypes.array).isRequired,
     home: PropTypes.arrayOf(PropTypes.array).isRequired,
-    match: PropTypes.arrayOf(PropTypes.array).isRequired
+    match: PropTypes.arrayOf(PropTypes.array).isRequired,
+    dispatch: PropTypes.func.isRequired
   };
   constructor(props) {
     super(props);
@@ -64,40 +68,84 @@ export default class BookEvent extends Component {
     this.proceed = () => {
       this.setState({ completed: true });
     };
+    this.modifyPaymentDetails = () => {
+      this.setState({ completed: false });
+    };
+    this.makePayment = () => {
+      const paymentObject = {};
+      paymentObject.eventId = this.state.eventId;
+      paymentObject.userId = this.state.userId;
+      paymentObject.email = this.state.email;
+      paymentObject.phone = this.state.phone;
+      paymentObject.totalAmount = totalAmount;
+      paymentObject.priceDetail = [];
+      this.state.playerCount.map(item => {
+        if (typeof item !== 'undefined' && item.qty > 0) {
+          const priceIdDetails = {};
+          const playerNames = {};
+          priceIdDetails.priceId = item.priceId;
+          priceIdDetails.quantity = item.qty;
+          priceIdDetails.playerNames = {};
+          for (let i = 1; i <= item.qty; i += 1) {
+            const id = document.getElementsByClassName(`${item.priceId}`);
+            for (let x = 0; x < id.length; x += 1) {
+              playerNames[x + 1] = id[x].value;
+            }
+            priceIdDetails.playerNames = playerNames;
+          }
+          paymentObject.priceDetail.push(priceIdDetails);
+        }
+        return null;
+      });
+      this.props.dispatch(getPaymentUrl(paymentObject)).catch(() => null);
+      console.log(paymentObject);
+    };
   }
   state = {
-    catId: Object.keys(this.props.bookingPrices.data)[0],
+    eventId: this.props.match.params.eventId,
+    catId: this.props.bookingPrices.data && this.props.bookingPrices.data !== undefined ? Object.keys(this.props.bookingPrices.data)[0] : {},
     details: this.props.bookingPrices.data[Object.keys(this.props.bookingPrices.data)[0]],
     ShowNextButton: false,
     completed: false,
-    playerCount: {}
+    playerCount: {},
+    phone: '7411286816',
+    email: 'premi@ka.com'
   };
   onCategoryChange = id => {
     console.log(this.props.bookingPrices.data[id], 'premi');
     this.setState({ details: this.props.bookingPrices.data[id], catId: id });
   };
   calc = () => {
-    let totalAmount = 0;
+    totalAmount = 0;
     this.state.playerCount.map(item => {
       totalAmount += item.amount * item.qty;
       return null;
     });
+    // this.setState({ totalAmount });
     return totalAmount;
   };
-  createInputFields = number => {
+  handleUserInput = e => {
+    const { name, value } = e.target;
+    this.setState({ [name]: value });
+  };
+  createInputFields = (number, identity) => {
     const table = [];
     for (let i = 0; i < number; i += 1) {
       table.push(<div>
-        <br /> <input type="text" />
+        <br /> <input type="text" className={identity} />
         <br />{' '}
       </div>);
     }
     return table;
   };
+  renderPhoneField = () => <input name="phone" placeholder="Enter 10 digit Mobile Number" value={this.state.phone} onChange={event => this.handleUserInput(event)} />;
+  renderEmailField = () => <input name="email" placeholder="Enter Your Email" value={this.state.email} onChange={event => this.handleUserInput(event)} />;
   renderPlayerDetails = () => (
     <div>
       <span>{this.props.home.data[this.props.match.params.eventId].eventName}</span>
       <div> total Amount : {this.calc()} </div>
+      {this.renderPhoneField()}
+      {this.renderEmailField()}
       <div>
         {this.state.playerCount &&
           Object.values(this.state.playerCount).map(item => {
@@ -108,31 +156,10 @@ export default class BookEvent extends Component {
                     <span>{item.name} | </span>
                   </div>
                   <div>
-                    <button
-                      onClick={() =>
-                        this.DecrementAmount(item.priceId, item.amount, item.name, item.priceId, item.catId)
-                      }
-                    >
-                      -
-                    </button>
-                    <input
-                      type="number"
-                      name="amount"
-                      value={
-                        this.state.playerCount[item.priceId] !== undefined
-                          ? this.state.playerCount[item.priceId].qty
-                          : 0
-                      }
-                      id={item.priceId}
-                    />
-                    <button
-                      onClick={() =>
-                        this.IncrementAmount(item.priceId, item.amount, item.name, item.priceId, item.catId)
-                      }
-                    >
-                      +
-                    </button>
-                    {this.createInputFields(this.state.playerCount[item.priceId].qty)}
+                    <button onClick={() => this.DecrementAmount(item.priceId, item.amount, item.name, item.priceId, item.catId)}>-</button>
+                    <input type="number" name="amount" value={this.state.playerCount[item.priceId] !== undefined ? this.state.playerCount[item.priceId].qty : 0} id={item.priceId} />
+                    <button onClick={() => this.IncrementAmount(item.priceId, item.amount, item.name, item.priceId, item.catId)}>+</button>
+                    {this.createInputFields(this.state.playerCount[item.priceId].qty, item.priceId)}
                   </div>
                 </div>
               );
@@ -140,6 +167,8 @@ export default class BookEvent extends Component {
             return null;
           })}
       </div>
+      <button onClick={() => this.modifyPaymentDetails()}> Modify </button>
+      <button onClick={() => this.makePayment()}> Payment &#8594; </button>
     </div>
   );
   render() {
@@ -177,31 +206,15 @@ export default class BookEvent extends Component {
                             <div>{item.desc}</div>
                           </div>
                           <div>
-                            <button
-                              onClick={() =>
-                                this.DecrementAmount(item.priceId, item.priceAmount, item.name, item.priceId)
-                              }
-                            >
-                              -
-                            </button>
+                            <button onClick={() => this.DecrementAmount(item.priceId, item.priceAmount, item.name, item.priceId)}>-</button>
                             <input
                               type="number"
                               name="amount"
-                              value={
-                                this.state.playerCount[item.priceId] !== undefined
-                                  ? this.state.playerCount[item.priceId].qty
-                                  : 0
-                              }
+                              value={this.state.playerCount[item.priceId] !== undefined ? this.state.playerCount[item.priceId].qty : 0}
                               id={item.priceId}
                               onChange={() => this.checkStatustoShowNextButton(item.priceId)}
                             />
-                            <button
-                              onClick={() =>
-                                this.IncrementAmount(item.priceId, item.priceAmount, item.name, item.priceId)
-                              }
-                            >
-                              +
-                            </button>
+                            <button onClick={() => this.IncrementAmount(item.priceId, item.priceAmount, item.name, item.priceId)}>+</button>
                           </div>
                         </div>
                       );
