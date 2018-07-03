@@ -10,7 +10,7 @@ import { connect } from 'react-redux';
 }))
 export default class Home extends Component {
   static propTypes = {
-    home: PropTypes.object.isRequired
+    home: PropTypes.shape(Object).isRequired
     // match: PropTypes.arrayOf(PropTypes.array).isRequired
   };
   render() {

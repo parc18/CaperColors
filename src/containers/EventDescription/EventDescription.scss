@@ -2,6 +2,7 @@
 	position: relative;
 	.eventDescImg {
 		width: 100%;
+		height: 200px;
 	}
 	.imgFilter {
 		position: absolute;
@@ -15,16 +16,81 @@
 		position: absolute;
 	    top: 10px;
 	    left: 10px;
-	    color: #fff;
 	    z-index: 1;
-	    font-size: 20px;
+	    height: 70px;
+	    width: 179px;
+	    color: #FFFFFF;
+	    font-family: "Lucida Grande";
+	    font-size: 30px;
+	    line-height: 35px;
 	}	
 }
+.eventShareStickyBtn {
+    width: 25%;
+    background: #ffffff;
+    color: #EF6C30;
+    height: 50px;
+   	font-family: "Lucida Grande";
+   	font-size: 14px;
+   	border: none;
+}
 .eventBookStickyBtn {
-	position: fixed;
-    bottom: 0;
-    width: 100%;
+    width: 75%;
     background: #ed6b0a;
     color: #fff;
-    height: 40px;
+    height: 50px;
+   	font-family: "Lucida Grande";
+   	font-size: 14px;
+   	border: none;
+}
+.box {
+    position: absolute;
+    left: 4%;
+    height: 20px;
+	width: 20px;
+	opacity: 0.41;
+	background-color: #5578A3;
+}
+
+.details {
+    width: auto;
+    width: auto;
+    /* height: 21px; */
+    position: relative;
+    background: #fff;
+    padding-left: 12%;
+    /* margin-left: 1px; */
+    padding-bottom: 13px;
+    color: #0B2340;
+    font-size: 12px;
+    padding-top: 13px;
+    font-family: "Lucida Grande";
+}
+.bott {
+	border-bottom: 1px solid #e2e2e2;
+}
+.eventDesc {
+	 width: auto;
+    /* height: 21px; */
+    position: relative;
+    background: #fff;
+    padding-left: 10px;
+    padding-right: 10px;
+    /* line-break: initial; */
+    /* margin-left: 1px; */
+    /* padding-bottom: 10px; */
+    color: #0B2340;
+    font-size: 12px;
+    text-align: justify;
+    text-justify: inter-word;
+    padding-top: 10px;
+    font-family: "Lucida Grande";
+    background-color: #F2F2F2;
+}
+
+.buttons {
+    position: fixed;
+    bottom: 0px;
+    float: left;
+    width: 100%;
 }

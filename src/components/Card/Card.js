@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
+// eslint-disable-next-line react/prefer-stateless-function
 export default class Card extends Component {
-  // eslint-disable-next-line react/prefer-stateless-function
   static propTypes = {
     name: PropTypes.string.isRequired,
     index: PropTypes.number.isRequired,

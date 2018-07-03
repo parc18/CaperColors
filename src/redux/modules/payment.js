@@ -18,7 +18,7 @@ export default function payment(state = initialState, action = {}) {
         ...state,
         PaymentRunning: false,
         PaymentLoaded: true,
-        data: action.result
+        paymentUrl: action.result.message
       };
     case PAYMENT_FAIL:
       return {

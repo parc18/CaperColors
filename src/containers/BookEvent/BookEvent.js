@@ -18,14 +18,16 @@ let totalAmount = 0;
 @connect(state => ({
   online: state.online,
   bookingPrices: state.bookingPrices,
-  home: state.home
+  home: state.home,
+  payment: state.payment
 }))
 export default class BookEvent extends Component {
   static propTypes = {
     bookingPrices: PropTypes.arrayOf(PropTypes.array).isRequired,
     home: PropTypes.arrayOf(PropTypes.array).isRequired,
     match: PropTypes.arrayOf(PropTypes.array).isRequired,
-    dispatch: PropTypes.func.isRequired
+    dispatch: PropTypes.func.isRequired,
+    payment: PropTypes.arrayOf(PropTypes.array).isRequired
   };
   constructor(props) {
     super(props);
@@ -111,6 +113,11 @@ export default class BookEvent extends Component {
     phone: '7411286816',
     email: 'premi@ka.com'
   };
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.payment && nextProps.payment.paymentUrl) {
+      window.location.assign(nextProps.payment.paymentUrl);
+    }
+  }
   onCategoryChange = id => {
     console.log(this.props.bookingPrices.data[id], 'premi');
     this.setState({ details: this.props.bookingPrices.data[id], catId: id });

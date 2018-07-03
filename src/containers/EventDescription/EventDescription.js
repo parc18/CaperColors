@@ -16,6 +16,9 @@ export default class EventDescription extends Component {
   state = {
     home: this.props.home.data[this.props.match.params.eventId]
   };
+  createMarkup() {
+    return { __html: this.state.home.description };
+  }
   render() {
     const styles = require('./EventDescription.scss');
     // require the logo image both from client and server
@@ -29,13 +32,27 @@ export default class EventDescription extends Component {
               <div className={styles.eventName}>{this.state.home.eventName}</div>
               <div className={styles.imgFilter} />
             </div>
-            <div className="mccc">{this.state.home.eventVenue}</div>
-            <div className="mccc">{this.state.home.date}</div>
-            <div className="mccc">{this.state.home.price}</div>
-            <div className="mccc">{this.state.home.description}</div>
-            <Link to={`/bookevent/${this.state.home.eventId}`}>
-              <button className={styles.eventBookStickyBtn}>Book Now &#8594;</button>
-            </Link>
+            <div className={`${styles.details} ${styles.bott}`}>
+              <span className={styles.box} />
+              {this.state.home.eventVenue}
+            </div>
+            <div className={`${styles.details} ${styles.bott}`}>
+              <span className={styles.box} />
+              {this.state.home.date}
+            </div>
+            <div className={styles.details}>
+              <span className={styles.box} />
+              {this.state.home.price}
+            </div>
+            <div className={styles.eventDesc} dangerouslySetInnerHTML={this.createMarkup()} />
+            <div className={styles.buttons}>
+              <a href={`whatsapp://send?text="${this.state.home.eventId}"`} data-action="share/whatsapp/share">
+                <button className={styles.eventShareStickyBtn}>Share</button>
+              </a>
+              <Link to={`/bookevent/${this.state.home.eventId}`}>
+                <button className={styles.eventBookStickyBtn}>Book Now &#8594;</button>
+              </Link>
+            </div>
           </div>
         </div>
       </div>
