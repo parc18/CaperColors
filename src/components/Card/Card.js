@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import { homeTime } from '../../helpers/timeConverter';
 
 // eslint-disable-next-line react/prefer-stateless-function
 export default class Card extends Component {
@@ -23,8 +24,8 @@ export default class Card extends Component {
             <div className={style.imgFilter} />
           </div>
           <div className={style.contentContainer}>
-            <div>{this.props.city} |</div>
-            <div>{this.props.date}</div>
+            <div className={style.city}>{this.props.city}</div>
+            <div className={style.city}>{homeTime(this.props.date)}</div>
             <div className={style.pdpDetails}>Details &#8594;</div>
           </div>
         </div>

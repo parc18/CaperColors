@@ -6,9 +6,12 @@ import { provideHooks } from 'redial';
 import { getEventsPrices as prices } from 'redux/modules/bookevent';
 import { requsetPaymentUrl as getPaymentUrl } from 'redux/modules/payment';
 import gameconfig from '../../../config/gameconfig';
+import { edpTime } from '../../helpers/timeConverter';
 
 const playerCount = [];
 let totalAmount = 0;
+const styles = require('./BookEvent.scss');
+const styles1 = require('../EventDescription/EventDescription.scss');
 
 @provideHooks({
   fetch: async ({ store: { dispatch }, match }) => {
@@ -32,7 +35,6 @@ export default class BookEvent extends Component {
   constructor(props) {
     super(props);
     this.DecrementAmount = (id, amount, name, priceId, categoryId = undefined) => {
-      console.log(id, this.state.catId);
       if (Number(document.getElementById(id).value) > 0) {
         document.getElementById(id).value = Number(document.getElementById(id).value) - 1;
         playerCount[id] = {
@@ -110,16 +112,22 @@ export default class BookEvent extends Component {
     ShowNextButton: false,
     completed: false,
     playerCount: {},
-    phone: '7411286816',
-    email: 'premi@ka.com'
+    phone: '',
+    email: ''
   };
   componentWillReceiveProps(nextProps) {
     if (nextProps.payment && nextProps.payment.paymentUrl) {
       window.location.assign(nextProps.payment.paymentUrl);
     }
   }
-  onCategoryChange = id => {
-    console.log(this.props.bookingPrices.data[id], 'premi');
+  onCategoryChange = (id, e) => {
+    const el = document.getElementsByClassName(e.target.className);
+    let i = 0;
+    while (i < el.length) {
+      el[i].classList.remove(styles.selected);
+      i += 1;
+    }
+    e.currentTarget.className += ` ${styles.selected}`;
     this.setState({ details: this.props.bookingPrices.data[id], catId: id });
   };
   calc = () => {
@@ -139,47 +147,81 @@ export default class BookEvent extends Component {
     const table = [];
     for (let i = 0; i < number; i += 1) {
       table.push(<div>
-        <br /> <input type="text" className={identity} />
-        <br />{' '}
+        <input type="text" className={`${identity} ${styles.players}`} placeholder="Player Name" />
       </div>);
     }
     return table;
   };
-  renderPhoneField = () => <input name="phone" placeholder="Enter 10 digit Mobile Number" value={this.state.phone} onChange={event => this.handleUserInput(event)} />;
-  renderEmailField = () => <input name="email" placeholder="Enter Your Email" value={this.state.email} onChange={event => this.handleUserInput(event)} />;
+  renderEmailField = () => <input className={styles.userEmailInput} name="email" placeholder="Enter Your email" value={this.state.email} onChange={event => this.handleUserInput(event)} />;
+  renderPhoneField = () => <input className={styles.userPhoneInput} name="phone" placeholder="Enter 10 digit mobile number" value={this.state.phone} onChange={event => this.handleUserInput(event)} />;
   renderPlayerDetails = () => (
     <div>
-      <span>{this.props.home.data[this.props.match.params.eventId].eventName}</span>
-      <div> total Amount : {this.calc()} </div>
-      {this.renderPhoneField()}
-      {this.renderEmailField()}
+      <div className={styles.infoBox}>
+        <div className={styles.name}>{this.props.home.data[this.props.match.params.eventId].eventName}</div>
+        <div className={styles.place}>{this.props.home.data[this.props.match.params.eventId].eventVenue}</div>
+        <div className={styles.timings}>
+          {edpTime(this.props.home.data[this.props.match.params.eventId].date)}, &nbsp;
+          {this.props.home.data[this.props.match.params.eventId].timings}
+        </div>
+        <div className={styles.payableAmount}>
+          {' '}
+          Total Payable Amount :{' '}
+          <span className={styles.money}>
+            <sup className={styles.rupee}>&#8377;</sup>
+            {this.calc()}
+          </span>{' '}
+        </div>
+      </div>
+      <div className={styles.userInfo}>
+        <div className={styles.userEmail}>{this.renderEmailField()} </div>
+        <div className={styles.userPhone}>{this.renderPhoneField()} </div>
+      </div>
       <div>
         {this.state.playerCount &&
           Object.values(this.state.playerCount).map(item => {
             if (typeof item !== 'undefined') {
               return (
-                <div key={item.catId}>
-                  <div>
-                    <span>{item.name} | </span>
+                <div className={styles.playerNamess} key={item.catId}>
+                  <div className={styles.catNamerofl}>
+                    <div className={`${styles.catName} ${styles.margletfright}`}>
+                      {item.name} <span className={styles.catgroup}>{gameconfig[item.catId]} </span>
+                    </div>
+                    <div className={styles.addsubContainer}>
+                      <button className={styles.addsub} onClick={() => this.DecrementAmount(item.priceId, item.amount, item.name, item.priceId, item.catId)}>
+                        &#8211;
+                      </button>
+                      <input
+                        className={styles.qtyInput}
+                        type="number"
+                        name="amount"
+                        value={this.state.playerCount[item.priceId] !== undefined ? this.state.playerCount[item.priceId].qty : 0}
+                        id={item.priceId}
+                      />
+                      <button className={styles.addsub} onClick={() => this.IncrementAmount(item.priceId, item.amount, item.name, item.priceId, item.catId)}>
+                        +
+                      </button>
+                    </div>
                   </div>
-                  <div>
-                    <button onClick={() => this.DecrementAmount(item.priceId, item.amount, item.name, item.priceId, item.catId)}>-</button>
-                    <input type="number" name="amount" value={this.state.playerCount[item.priceId] !== undefined ? this.state.playerCount[item.priceId].qty : 0} id={item.priceId} />
-                    <button onClick={() => this.IncrementAmount(item.priceId, item.amount, item.name, item.priceId, item.catId)}>+</button>
-                    {this.createInputFields(this.state.playerCount[item.priceId].qty, item.priceId)}
-                  </div>
+                  <div>{this.createInputFields(this.state.playerCount[item.priceId].qty, item.priceId)}</div>
                 </div>
               );
             }
             return null;
           })}
       </div>
-      <button onClick={() => this.modifyPaymentDetails()}> Modify </button>
-      <button onClick={() => this.makePayment()}> Payment &#8594; </button>
+      <div className={styles.ctas}>
+        <button className={styles1.eventShareStickyBtn} onClick={() => this.modifyPaymentDetails()}>
+          {' '}
+          Modify{' '}
+        </button>
+        <button className={styles1.eventBookStickyBtn} onClick={() => this.makePayment()}>
+          {' '}
+          Payment &#8594;{' '}
+        </button>
+      </div>
     </div>
   );
   render() {
-    const styles = require('./BookEvent.scss');
     // const firstValue = Object.values(this.props.bookingPrices.data)[0];
     console.log('firstValue: ', this.state.details, this.state.playerCount);
     // require the logo image both from client and server
@@ -190,11 +232,12 @@ export default class BookEvent extends Component {
           <div>
             <div className={styles.container}>
               <div className={styles.selectGameType}>
-                {Object.keys(this.props.bookingPrices.data).map(item => {
+                {Object.keys(this.props.bookingPrices.data).map((index, item) => {
+                  console.log(index, item);
                   if (typeof item !== 'undefined') {
                     return (
-                      <div key={item} onClick={() => this.onCategoryChange(item)} role="presentation">
-                        {gameconfig[item]}
+                      <div className={`${styles.category} ${item === 0 ? styles.selected : ''}`} key={index} onClick={e => this.onCategoryChange(index, e, this)} role="presentation">
+                        {gameconfig[index]}
                       </div>
                     );
                   }
@@ -206,22 +249,30 @@ export default class BookEvent extends Component {
                   Object.values(this.state.details).map(item => {
                     if (typeof item !== 'undefined') {
                       return (
-                        <div key={item.priceId}>
-                          <div>
-                            <span>{item.name} | </span>
-                            <span>{item.priceAmount}</span>
-                            <div>{item.desc}</div>
+                        <div classNmae={styles.bigBox} key={item.priceId}>
+                          <div className={styles.allDetails}>
+                            <div className={styles.catName}>{item.name} </div>
+                            <div className={styles.amount}>
+                              <sup className={styles.rupee}>&#8377;</sup>
+                              {item.priceAmount}
+                            </div>
+                            <div className={styles.ageDesc}>{item.desc}</div>
                           </div>
-                          <div>
-                            <button onClick={() => this.DecrementAmount(item.priceId, item.priceAmount, item.name, item.priceId)}>-</button>
+                          <div className={styles.priceInput}>
+                            <button className={styles.addsub} onClick={() => this.DecrementAmount(item.priceId, item.priceAmount, item.name, item.priceId)}>
+                              &#8211;
+                            </button>
                             <input
+                              className={styles.qtyInput}
                               type="number"
                               name="amount"
                               value={this.state.playerCount[item.priceId] !== undefined ? this.state.playerCount[item.priceId].qty : 0}
                               id={item.priceId}
                               onChange={() => this.checkStatustoShowNextButton(item.priceId)}
                             />
-                            <button onClick={() => this.IncrementAmount(item.priceId, item.priceAmount, item.name, item.priceId)}>+</button>
+                            <button className={styles.addsub} onClick={() => this.IncrementAmount(item.priceId, item.priceAmount, item.name, item.priceId)}>
+                              +
+                            </button>
                           </div>
                         </div>
                       );
@@ -230,7 +281,12 @@ export default class BookEvent extends Component {
                   })}
               </div>
             </div>
-            {this.state.ShowNextButton && <button onClick={() => this.proceed()}> Next </button>}
+            {this.state.ShowNextButton && (
+              <button className={styles.nextButton} onClick={() => this.proceed()}>
+                {' '}
+                Next{' '}
+              </button>
+            )}
           </div>
         )}
         {this.state.completed && this.renderPlayerDetails()}

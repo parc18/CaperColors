@@ -3,11 +3,193 @@
     overflow-x: scroll;
     overflow-y: hidden;
     white-space: nowrap;
-    padding: 10px;
     background-color: #fff;
-    margin-bottom: 10px;
+    margin-bottom: 8px;
     span {
       margin: 10px;
       color: #898989;
     }
+    .category {
+        font-family: Aller;
+        font-size: 14px;
+        font-weight: bold;
+        line-height: 16px;
+        width: 25%;
+        float: left;
+        padding: 10px 10px;
+        text-align: center;
+    }
+    .selected {
+        color: #EF6C30;
+        border-bottom: 2px solid;
+    }
+}
+
+.catName {
+    color: #000000;
+    font-family: "Lucida Grande";
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 18px;
+    float: left;
+    position: relative;
+    margin-right: 25px;
+    &::after {
+        left: 55px;
+        top: 0px;
+        bottom: -1px;
+        content: "";
+        display: block;
+        position: absolute;
+        z-index: 1;
+        border: 1px solid #5578A3;
+        border-width: 0 0 0 1px;
+    }
+}
+.bigBox {
+    position: relative;
+}
+.amount {
+    color: #000000;
+    font-family: "Lucida Grande";
+    font-size: 16px;
+    line-height: 18px;
+}
+.ageDesc {
+    color: #808080;
+    font-family: "Lucida Grande";
+    font-size: 12px;
+    line-height: 15px;
+    margin-top: 10px;
+}
+.priceInput {
+    float: right;
+    position: relative;
+    top: -55px;
+    right: 21px;
+}
+.allDetails {
+    background: #FFFFFF;
+    margin: 0 8px 8px 8px;
+    background: #FFFFFF;
+    padding: 10px 10px;
+}
+.addsub {
+    border-radius: 12px;
+    border: 1px solid rgba(85,120,163,0.2);
+    background-color: white;
+    text-decoration: none;
+    outline: none;
+    color: #5578A3;
+}
+.qtyInput {
+    width: 35px;
+    text-decoration: none;
+    outline: none;
+    text-align: center;
+}
+.rupee{
+    position: relative;
+    top: -3px;
+    left: -2px;
+}
+.nextButton {
+    width: 100%;
+    background: #ed6b0a;
+    color: #fff;
+    height: 50px;
+    font-family: "Lucida Grande";
+    font-size: 14px;
+    border: none;
+    position: fixed;
+    bottom: 0;
+}
+.infoBox {
+    padding: 18px;
+    background: #ffffff;
+    .name {
+        color: #0B2340;
+        font-family: "Lucida Grande";
+        font-size: 20px;
+        line-height: 23px;
+        margin-bottom: 8px;
+    }
+    .place {
+        color: #0B2340;
+        font-family: "Lucida Grande";
+        font-size: 10px;
+        line-height: 14px;
+        margin-bottom: 8px;
+    }
+    .timings {
+        color: #0B2340;
+        font-family: "Lucida Grande";
+        font-size: 10px;
+        line-height: 14px;
+        margin-bottom: 2px;
+    }
+    .payableAmount {
+        color: #0B2340;
+        font-family: "Lucida Grande";
+        font-size: 12px;
+        font-weight: bold;
+    }
+    .money {
+        color: #0B2340;
+        font-family: "Lucida Grande";
+        font-size: 24px;
+        line-height: 28px;
+        font-weight: normal;
+        position: relative;
+        left: 35%;
+        top: 8px;
+    }
+}
+.userInfo {
+    background: #ffffff;
+    margin: 10px 0 10px 0;
+    .userEmailInput, .userPhoneInput {
+        width: 96%;
+        border: 1px solid #CCCCCC;
+        margin: 8px;
+        padding: 6px 6px 6px 8px;
+        outline: none;
+        text-decoration: none;
+    }
+}
+.ctas {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: #5578A3;
+    font-family: "Lucida Grande";
+    font-size: 12px;
+}
+.playerNamess {
+    background: #ffffff;
+    margin-bottom: 10px;
+}
+.players {
+    width: 94%;
+    border: 1px solid #CCCCCC;
+    margin: 8px;
+    padding: 6px 6px 6px 8px;
+    outline: none;
+    text-decoration: none;
+}
+.addsubContainer {
+    width: 30%;
+    float: right;
+    text-align: right;
+    margin-right: 17px;
+    margin-top: 10px;
+}
+.margletfright {
+    margin-top: 10px;
+    margin-left: 10px;
+}
+.catgroup {
+    margin-left: 20px;
 }

@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import Helmet from 'react-helmet';
 import { connect } from 'react-redux';
+import { edpTime } from '../../helpers/timeConverter';
 
 @connect(state => ({
   online: state.online,
@@ -38,11 +39,11 @@ export default class EventDescription extends Component {
             </div>
             <div className={`${styles.details} ${styles.bott}`}>
               <span className={styles.box} />
-              {this.state.home.date}
+              {edpTime(this.state.home.date)}, {this.state.home.timings}
             </div>
             <div className={styles.details}>
               <span className={styles.box} />
-              {this.state.home.price}
+              Rs {this.state.home.price} onwards
             </div>
             <div className={styles.eventDesc} dangerouslySetInnerHTML={this.createMarkup()} />
             <div className={styles.buttons}>
