@@ -26,7 +26,7 @@ import config from 'config';
       await dispatch(loadAuth()).catch(() => null);
     }
     if (!isHomeFilled(getState())) {
-      await dispatch(fillHome(1)).catch(() => null);
+      await dispatch(fillHome(-1)).catch(() => null);
     }
   }
 })
@@ -42,11 +42,16 @@ export default class App extends Component {
   static propTypes = {
     route: PropTypes.objectOf(PropTypes.any).isRequired,
     location: PropTypes.objectOf(PropTypes.any).isRequired,
+    dispatch: PropTypes.func.isRequired,
     user: PropTypes.shape({
       email: PropTypes.string
     }),
     notifs: PropTypes.shape({
       global: PropTypes.array
+    }).isRequired,
+    store: PropTypes.shape({
+      dispatch: PropTypes.func,
+      getState: PropTypes.func
     }).isRequired,
     logout: PropTypes.func.isRequired,
     pushState: PropTypes.func.isRequired
@@ -81,7 +86,9 @@ export default class App extends Component {
     event.preventDefault();
     this.props.logout();
   };
-
+  changeCity = id => {
+    this.context.store.dispatch(fillHome(id)).catch(() => null);
+  };
   render() {
     const { user, notifs, route } = this.props;
     const styles = require('./App.scss');
@@ -92,10 +99,18 @@ export default class App extends Component {
           <Navbar.Header className={styles.Allheader}>
             <ButtonToolbar className={styles.cityDropDown}>
               <DropdownButton title="All Cities" className={styles.cityDropDown} id="dropdown-size-medium">
-                <MenuItem eventKey="1">Delhi</MenuItem>
-                <MenuItem eventKey="2">Pune</MenuItem>
-                <MenuItem eventKey="3">Bangalore</MenuItem>
-                <MenuItem eventKey="3">Mumbai</MenuItem>
+                <MenuItem eventKey="1" onClick={() => this.changeCity(1)}>
+                  Delhi1
+                </MenuItem>
+                <MenuItem eventKey="2" onClick={() => this.changeCity(2)}>
+                  Pune
+                </MenuItem>
+                <MenuItem eventKey="3" onClick={() => this.changeCity(3)}>
+                  Bangalore
+                </MenuItem>
+                <MenuItem eventKey="3" onClick={() => this.changeCity(4)}>
+                  Mumbai
+                </MenuItem>
               </DropdownButton>
             </ButtonToolbar>
             <Navbar.Brand>
@@ -158,11 +173,7 @@ export default class App extends Component {
         <div className={styles.appContent}>
           {notifs.global && (
             <div className="">
-              <Notifs
-                className={styles.notifs}
-                namespace="global"
-                NotifComponent={props => <Alert bsStyle={props.kind}>{props.message}</Alert>}
-              />
+              <Notifs className={styles.notifs} namespace="global" NotifComponent={props => <Alert bsStyle={props.kind}>{props.message}</Alert>} />
             </div>
           )}
 

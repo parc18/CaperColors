@@ -17,6 +17,9 @@ const getJavaUrl = (context, params) => {
     case 'payment':
       url += '/book_event';
       break;
+    case 'thankyou':
+      url += `/payment_status?paymentId=${params}`;
+      break;
     // no default
   }
   return {

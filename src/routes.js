@@ -1,6 +1,6 @@
 import { routerActions } from 'react-router-redux';
 import { connectedReduxRedirect } from 'redux-auth-wrapper/history4/redirect';
-import { App, Home, NotFound, EventDescription, BookEvent } from 'containers';
+import { App, Home, NotFound, EventDescription, BookEvent, ThankYouPage } from 'containers';
 import About from 'containers/About/Loadable';
 import Chat from 'containers/Chat/Loadable';
 import ChatFeathers from 'containers/ChatFeathers/Loadable';
@@ -32,6 +32,7 @@ const routes = [
       { path: '/', exact: true, component: Home },
       { path: '/eventdetails/:eventId', component: EventDescription },
       { path: '/bookevent/:eventId', component: BookEvent },
+      { path: '/thankyou', component: ThankYouPage },
       { path: '/about', component: About },
       { path: '/chat', component: Chat },
       { path: '/chat-feathers', component: isAuthenticated(ChatFeathers) },

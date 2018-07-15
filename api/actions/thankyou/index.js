@@ -1,0 +1,1 @@
+export thankyou from './thankyou';

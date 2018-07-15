@@ -5,6 +5,7 @@ export App from './App/App';
 export Home from './Home/Home';
 export EventDescription from './EventDescription/EventDescription';
 export BookEvent from './BookEvent/BookEvent';
+export ThankYouPage from './ThankYouPage/ThankYouPage';
 // export Login from './Login/Login';
 // export LoginSuccess from './LoginSuccess/LoginSuccess';
 export NotFound from './NotFound/NotFound';

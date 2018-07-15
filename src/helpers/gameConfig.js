@@ -1,5 +1,4 @@
 export default function getGameType(type) {
-  console.log('type: ', type);
   const gameType = {
     1: 'Men/Boys',
     2: 'Women/Girls',

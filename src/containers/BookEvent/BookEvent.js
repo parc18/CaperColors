@@ -82,6 +82,14 @@ export default class BookEvent extends Component {
       paymentObject.email = this.state.email;
       paymentObject.phone = this.state.phone;
       paymentObject.totalAmount = totalAmount;
+      if (!this.isEmail(this.state.email)) {
+        alert('Please Provide a Valid Email ID');
+        return;
+      }
+      if (!this.isPhone(this.state.phone)) {
+        alert('Please Provide a Valid Mobile Number');
+        return;
+      }
       paymentObject.priceDetail = [];
       this.state.playerCount.map(item => {
         if (typeof item !== 'undefined' && item.qty > 0) {
@@ -102,7 +110,6 @@ export default class BookEvent extends Component {
         return null;
       });
       this.props.dispatch(getPaymentUrl(paymentObject)).catch(() => null);
-      console.log(paymentObject);
     };
   }
   state = {
@@ -152,7 +159,25 @@ export default class BookEvent extends Component {
     }
     return table;
   };
-  renderEmailField = () => <input className={styles.userEmailInput} name="email" placeholder="Enter Your email" value={this.state.email} onChange={event => this.handleUserInput(event)} />;
+  isEmail = (email = null) => {
+    const re = /^(([^<>()[\]\\.,;:\s@\\"]+(\.[^<>()[\]\\.,;:\s@\\"]+)*)|(\\".+\\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(email);
+  };
+  isPhone = (phone = null) => {
+    const re = /^[0]?[789]\d{9}$/;
+    return re.test(phone);
+  };
+  renderEmailField = () => (
+    <input
+      className={styles.userEmailInput}
+      name="email"
+      pattern="/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/"
+      required
+      placeholder="Enter Your email"
+      value={this.state.email}
+      onChange={event => this.handleUserInput(event)}
+    />
+  );
   renderPhoneField = () => <input className={styles.userPhoneInput} name="phone" placeholder="Enter 10 digit mobile number" value={this.state.phone} onChange={event => this.handleUserInput(event)} />;
   renderPlayerDetails = () => (
     <div>
@@ -222,9 +247,6 @@ export default class BookEvent extends Component {
     </div>
   );
   render() {
-    // const firstValue = Object.values(this.props.bookingPrices.data)[0];
-    console.log('firstValue: ', this.state.details, this.state.playerCount);
-    // require the logo image both from client and server
     return (
       <div className={styles.home}>
         <Helmet title="Home" />
@@ -233,7 +255,6 @@ export default class BookEvent extends Component {
             <div className={styles.container}>
               <div className={styles.selectGameType}>
                 {Object.keys(this.props.bookingPrices.data).map((index, item) => {
-                  console.log(index, item);
                   if (typeof item !== 'undefined') {
                     return (
                       <div className={`${styles.category} ${item === 0 ? styles.selected : ''}`} key={index} onClick={e => this.onCategoryChange(index, e, this)} role="presentation">
