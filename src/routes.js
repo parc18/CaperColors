@@ -1,29 +1,21 @@
-import { routerActions } from 'react-router-redux';
-import { connectedReduxRedirect } from 'redux-auth-wrapper/history4/redirect';
-import { App, Home, NotFound, EventDescription, BookEvent, ThankYouPage } from 'containers';
-import About from 'containers/About/Loadable';
-import Chat from 'containers/Chat/Loadable';
-import ChatFeathers from 'containers/ChatFeathers/Loadable';
-import Login from 'containers/Login/Loadable';
-import LoginSuccess from 'containers/LoginSuccess/Loadable';
-import Register from 'containers/Register/Loadable';
-import Survey from 'containers/Survey/Loadable';
-import Widgets from 'containers/Widgets/Loadable';
+// import { routerActions } from 'react-router-redux';
+// import { connectedReduxRedirect } from 'redux-auth-wrapper/history4/redirect';
+import { App, Home, NotFound, EventDescription, BookEvent, ThankYouPage, About, Vision, Refund, Privacy, Terms } from 'containers';
 
-const isAuthenticated = connectedReduxRedirect({
-  redirectPath: '/login',
-  authenticatedSelector: state => state.auth.user !== null,
-  redirectAction: routerActions.replace,
-  wrapperDisplayName: 'UserIsAuthenticated'
-});
+// const isAuthenticated = connectedReduxRedirect({
+//   redirectPath: '/login',
+//   authenticatedSelector: state => state.auth.user !== null,
+//   redirectAction: routerActions.replace,
+//   wrapperDisplayName: 'UserIsAuthenticated'
+// });
 
-const isNotAuthenticated = connectedReduxRedirect({
-  redirectPath: '/',
-  authenticatedSelector: state => state.auth.user === null,
-  redirectAction: routerActions.replace,
-  wrapperDisplayName: 'UserIsAuthenticated',
-  allowRedirectBack: false
-});
+// const isNotAuthenticated = connectedReduxRedirect({
+//   redirectPath: '/',
+//   authenticatedSelector: state => state.auth.user === null,
+//   redirectAction: routerActions.replace,
+//   wrapperDisplayName: 'UserIsAuthenticated',
+//   allowRedirectBack: false
+// });
 
 const routes = [
   {
@@ -34,13 +26,10 @@ const routes = [
       { path: '/bookevent/:eventId', component: BookEvent },
       { path: '/thankyou', component: ThankYouPage },
       { path: '/about', component: About },
-      { path: '/chat', component: Chat },
-      { path: '/chat-feathers', component: isAuthenticated(ChatFeathers) },
-      { path: '/login', component: Login },
-      { path: '/login-success', component: isAuthenticated(LoginSuccess) },
-      { path: '/register', component: isNotAuthenticated(Register) },
-      { path: '/survey', component: Survey },
-      { path: '/widgets', component: Widgets },
+      { path: '/vision', component: Vision },
+      { path: '/refund', component: Refund },
+      { path: '/terms', component: Terms },
+      { path: '/privacy', component: Privacy },
       { component: NotFound }
     ]
   }

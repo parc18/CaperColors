@@ -11,8 +11,8 @@ import { edpTime } from '../../helpers/timeConverter';
 }))
 export default class EventDescription extends Component {
   static propTypes = {
-    home: PropTypes.arrayOf(PropTypes.object).isRequired,
-    match: PropTypes.arrayOf(PropTypes.array).isRequired
+    home: PropTypes.objectOf(PropTypes.any).isRequired,
+    match: PropTypes.objectOf(PropTypes.any).isRequired
   };
   state = {
     home: this.props.home.data[this.props.match.params.eventId]

@@ -1,13 +1,13 @@
-// export About from './About/About';
+export About from './About/About';
 export App from './App/App';
-// export Chat from './Chat/Chat';
-// export ChatFeathers from './ChatFeathers/ChatFeathers';
+export Vision from './Vision/Vision';
+export Refund from './Refund/Refund';
 export Home from './Home/Home';
 export EventDescription from './EventDescription/EventDescription';
 export BookEvent from './BookEvent/BookEvent';
 export ThankYouPage from './ThankYouPage/ThankYouPage';
-// export Login from './Login/Login';
-// export LoginSuccess from './LoginSuccess/LoginSuccess';
+export Terms from './Terms/Terms';
+export Privacy from './Privacy/Privacy';
 export NotFound from './NotFound/NotFound';
 // export Register from './Register/Register';
 // export Survey from './Survey/Survey';

@@ -42,16 +42,11 @@ export default class App extends Component {
   static propTypes = {
     route: PropTypes.objectOf(PropTypes.any).isRequired,
     location: PropTypes.objectOf(PropTypes.any).isRequired,
-    dispatch: PropTypes.func.isRequired,
     user: PropTypes.shape({
       email: PropTypes.string
     }),
     notifs: PropTypes.shape({
       global: PropTypes.array
-    }).isRequired,
-    store: PropTypes.shape({
-      dispatch: PropTypes.func,
-      getState: PropTypes.func
     }).isRequired,
     logout: PropTypes.func.isRequired,
     pushState: PropTypes.func.isRequired
@@ -130,37 +125,21 @@ export default class App extends Component {
                   <NavItem>Chat with Feathers</NavItem>
                 </LinkContainer>
               )}
-
-              <LinkContainer to="/chat">
-                <NavItem>Chat</NavItem>
-              </LinkContainer>
-              <LinkContainer to="/widgets">
-                <NavItem>Widgets</NavItem>
-              </LinkContainer>
-              <LinkContainer to="/survey">
-                <NavItem>Survey</NavItem>
-              </LinkContainer>
               <LinkContainer to="/about">
                 <NavItem>About Us</NavItem>
               </LinkContainer>
-
-              {!user && (
-                <LinkContainer to="/login">
-                  <NavItem>Login</NavItem>
-                </LinkContainer>
-              )}
-              {!user && (
-                <LinkContainer to="/register">
-                  <NavItem>Register</NavItem>
-                </LinkContainer>
-              )}
-              {user && (
-                <LinkContainer to="/logout">
-                  <NavItem className="logout-link" onClick={this.handleLogout}>
-                    Logout
-                  </NavItem>
-                </LinkContainer>
-              )}
+              <LinkContainer to="/vision">
+                <NavItem>Our Vision</NavItem>
+              </LinkContainer>
+              <LinkContainer to="/refund">
+                <NavItem>CANCELLATION AND REFUND POLICY</NavItem>
+              </LinkContainer>
+              <LinkContainer to="/privacy">
+                <NavItem>PRIVACY POLICY</NavItem>
+              </LinkContainer>
+              <LinkContainer to="/terms">
+                <NavItem>TERMS OF SERVICE</NavItem>
+              </LinkContainer>
             </Nav>
             {user && (
               <p className="navbar-text">

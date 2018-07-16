@@ -13,6 +13,9 @@ let totalAmount = 0;
 const styles = require('./BookEvent.scss');
 const styles1 = require('../EventDescription/EventDescription.scss');
 
+let universalPlayerCount = 0;
+let fakeCounter = 1;
+
 @provideHooks({
   fetch: async ({ store: { dispatch }, match }) => {
     await dispatch(prices(match[1].match.params.eventId)).catch(() => null);
@@ -26,17 +29,21 @@ const styles1 = require('../EventDescription/EventDescription.scss');
 }))
 export default class BookEvent extends Component {
   static propTypes = {
-    bookingPrices: PropTypes.arrayOf(PropTypes.array).isRequired,
-    home: PropTypes.arrayOf(PropTypes.array).isRequired,
-    match: PropTypes.arrayOf(PropTypes.array).isRequired,
+    bookingPrices: PropTypes.objectOf(PropTypes.any).isRequired,
+    home: PropTypes.objectOf(PropTypes.any).isRequired,
+    match: PropTypes.objectOf(PropTypes.any).isRequired,
     dispatch: PropTypes.func.isRequired,
-    payment: PropTypes.arrayOf(PropTypes.array).isRequired
+    payment: PropTypes.objectOf(PropTypes.any).isRequired
   };
   constructor(props) {
     super(props);
     this.DecrementAmount = (id, amount, name, priceId, categoryId = undefined) => {
+      if (totalAmount < 10) {
+        this.setState({ completed: false });
+      }
       if (Number(document.getElementById(id).value) > 0) {
         document.getElementById(id).value = Number(document.getElementById(id).value) - 1;
+        universalPlayerCount -= 1;
         playerCount[id] = {
           qty: Number(document.getElementById(id).value),
           amount,
@@ -51,6 +58,7 @@ export default class BookEvent extends Component {
     this.IncrementAmount = (id, amount, name, priceId, categoryId = undefined) => {
       if (Number(document.getElementById(id).value) < 18) {
         document.getElementById(id).value = Number(document.getElementById(id).value) + 1;
+        universalPlayerCount += 1;
         playerCount[id] = {
           qty: Number(document.getElementById(id).value),
           amount,
@@ -63,11 +71,11 @@ export default class BookEvent extends Component {
       }
     };
     this.checkStatustoShowNextButton = () => {
-      // if (Number(document.getElementById(1).value) > 0) {
-      this.setState({ ShowNextButton: true });
-      // } else {
-      // this.setState({ ShowNextButton: false });
-      // }
+      if (universalPlayerCount > 0) {
+        this.setState({ ShowNextButton: true });
+      } else {
+        this.setState({ ShowNextButton: false });
+      }
     };
     this.proceed = () => {
       this.setState({ completed: true });
@@ -76,6 +84,11 @@ export default class BookEvent extends Component {
       this.setState({ completed: false });
     };
     this.makePayment = () => {
+      if (totalAmount < 10) {
+        alert('Please select players, count should be greater than 1');
+        this.setState({ completed: false });
+        return;
+      }
       const paymentObject = {};
       paymentObject.eventId = this.state.eventId;
       paymentObject.userId = this.state.userId;
@@ -153,7 +166,8 @@ export default class BookEvent extends Component {
   createInputFields = (number, identity) => {
     const table = [];
     for (let i = 0; i < number; i += 1) {
-      table.push(<div>
+      fakeCounter += 1;
+      table.push(<div key={fakeCounter}>
         <input type="text" className={`${identity} ${styles.players}`} placeholder="Player Name" />
       </div>);
     }
@@ -180,7 +194,7 @@ export default class BookEvent extends Component {
   );
   renderPhoneField = () => <input className={styles.userPhoneInput} name="phone" placeholder="Enter 10 digit mobile number" value={this.state.phone} onChange={event => this.handleUserInput(event)} />;
   renderPlayerDetails = () => (
-    <div>
+    <div key={fakeCounter + 10}>
       <div className={styles.infoBox}>
         <div className={styles.name}>{this.props.home.data[this.props.match.params.eventId].eventName}</div>
         <div className={styles.place}>{this.props.home.data[this.props.match.params.eventId].eventVenue}</div>
@@ -201,10 +215,10 @@ export default class BookEvent extends Component {
         <div className={styles.userEmail}>{this.renderEmailField()} </div>
         <div className={styles.userPhone}>{this.renderPhoneField()} </div>
       </div>
-      <div>
+      <div key={fakeCounter + 20}>
         {this.state.playerCount &&
           Object.values(this.state.playerCount).map(item => {
-            if (typeof item !== 'undefined') {
+            if (typeof item !== 'undefined' && this.state.playerCount[item.priceId] !== undefined && this.state.playerCount[item.priceId].qty !== 0) {
               return (
                 <div className={styles.playerNamess} key={item.catId}>
                   <div className={styles.catNamerofl}>
@@ -219,7 +233,7 @@ export default class BookEvent extends Component {
                         className={styles.qtyInput}
                         type="number"
                         name="amount"
-                        value={this.state.playerCount[item.priceId] !== undefined ? this.state.playerCount[item.priceId].qty : 0}
+                        defaultValue={this.state.playerCount[item.priceId] !== undefined ? this.state.playerCount[item.priceId].qty : 0}
                         id={item.priceId}
                       />
                       <button className={styles.addsub} onClick={() => this.IncrementAmount(item.priceId, item.amount, item.name, item.priceId, item.catId)}>
@@ -248,7 +262,7 @@ export default class BookEvent extends Component {
   );
   render() {
     return (
-      <div className={styles.home}>
+      <div key={fakeCounter + 30} className={styles.home}>
         <Helmet title="Home" />
         {!this.state.completed && (
           <div>
@@ -270,7 +284,7 @@ export default class BookEvent extends Component {
                   Object.values(this.state.details).map(item => {
                     if (typeof item !== 'undefined') {
                       return (
-                        <div classNmae={styles.bigBox} key={item.priceId}>
+                        <div className={styles.bigBox} key={item.priceId}>
                           <div className={styles.allDetails}>
                             <div className={styles.catName}>{item.name} </div>
                             <div className={styles.amount}>

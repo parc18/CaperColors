@@ -33,19 +33,18 @@ const restApp = createApp('rest');
 const client = apiClient();
 const providers = { app, restApp, client };
 
-function initSocket() {
-  socket.on('news', data => {
-    console.log(data);
-    socket.emit('my other event', { my: 'data from client' });
-  });
-  socket.on('msg', data => {
-    console.log(data);
-  });
+// function initSocket() {
+//   socket.on('news', data => {
+//     socket.emit('my other event', { my: 'data from client' });
+//   });
+//   socket.on('msg', data => {
+//     console.log(data);
+//   });
 
-  return socket;
-}
+//   return socket;
+// }
 
-global.socket = initSocket();
+// global.socket = initSocket();
 
 (async () => {
   const storedData = await getStoredState(persistConfig);
