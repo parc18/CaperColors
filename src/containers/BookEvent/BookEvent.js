@@ -183,6 +183,7 @@ export default class BookEvent extends Component {
   };
   renderEmailField = () => (
     <input
+      key="email"
       className={styles.userEmailInput}
       name="email"
       pattern="/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/"
@@ -192,9 +193,9 @@ export default class BookEvent extends Component {
       onChange={event => this.handleUserInput(event)}
     />
   );
-  renderPhoneField = () => <input className={styles.userPhoneInput} name="phone" placeholder="Enter 10 digit mobile number" value={this.state.phone} onChange={event => this.handleUserInput(event)} />;
+  renderPhoneField = () => <input key="phone" className={styles.userPhoneInput} name="phone" placeholder="Enter 10 digit mobile number" value={this.state.phone} onChange={event => this.handleUserInput(event)} />;
   renderPlayerDetails = () => (
-    <div key={fakeCounter + 10}>
+    <div>
       <div className={styles.infoBox}>
         <div className={styles.name}>{this.props.home.data[this.props.match.params.eventId].eventName}</div>
         <div className={styles.place}>{this.props.home.data[this.props.match.params.eventId].eventVenue}</div>
@@ -215,7 +216,7 @@ export default class BookEvent extends Component {
         <div className={styles.userEmail}>{this.renderEmailField()} </div>
         <div className={styles.userPhone}>{this.renderPhoneField()} </div>
       </div>
-      <div key={fakeCounter + 20}>
+      <div>
         {this.state.playerCount &&
           Object.values(this.state.playerCount).map(item => {
             if (typeof item !== 'undefined' && this.state.playerCount[item.priceId] !== undefined && this.state.playerCount[item.priceId].qty !== 0) {
@@ -233,8 +234,9 @@ export default class BookEvent extends Component {
                         className={styles.qtyInput}
                         type="number"
                         name="amount"
-                        defaultValue={this.state.playerCount[item.priceId] !== undefined ? this.state.playerCount[item.priceId].qty : 0}
+                        value={this.state.playerCount[item.priceId] !== undefined ? this.state.playerCount[item.priceId].qty : 0}
                         id={item.priceId}
+                        onChange={this.handleUserInput}
                       />
                       <button className={styles.addsub} onClick={() => this.IncrementAmount(item.priceId, item.amount, item.name, item.priceId, item.catId)}>
                         +
@@ -262,7 +264,7 @@ export default class BookEvent extends Component {
   );
   render() {
     return (
-      <div key={fakeCounter + 30} className={styles.home}>
+      <div className={styles.home}>
         <Helmet title="Home" />
         {!this.state.completed && (
           <div>
