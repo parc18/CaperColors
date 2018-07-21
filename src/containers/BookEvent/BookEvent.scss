@@ -1,3 +1,8 @@
+.container {
+    max-width: 1200px;
+    margin: auto;
+}
+
 .selectGameType {
 	width: auto;
     overflow-x: scroll;
@@ -103,6 +108,7 @@
     border: none;
     position: fixed;
     bottom: 0;
+    max-width: 1200px;
 }
 .infoBox {
     padding: 18px;
@@ -161,6 +167,7 @@
     position: fixed;
     bottom: 0;
     width: 100%;
+    max-width: 1200px;
 }
 ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
     color: #5578A3;

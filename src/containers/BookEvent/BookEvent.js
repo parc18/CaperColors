@@ -193,7 +193,9 @@ export default class BookEvent extends Component {
       onChange={event => this.handleUserInput(event)}
     />
   );
-  renderPhoneField = () => <input key="phone" className={styles.userPhoneInput} name="phone" placeholder="Enter 10 digit mobile number" value={this.state.phone} onChange={event => this.handleUserInput(event)} />;
+  renderPhoneField = () => (
+    <input key="phone" className={styles.userPhoneInput} name="phone" placeholder="Enter 10 digit mobile number" value={this.state.phone} onChange={event => this.handleUserInput(event)} />
+  );
   renderPlayerDetails = () => (
     <div>
       <div className={styles.infoBox}>
@@ -264,11 +266,11 @@ export default class BookEvent extends Component {
   );
   render() {
     return (
-      <div className={styles.home}>
+      <div className={styles.container}>
         <Helmet title="Home" />
         {!this.state.completed && (
           <div>
-            <div className={styles.container}>
+            <div>
               <div className={styles.selectGameType}>
                 {Object.keys(this.props.bookingPrices.data).map((index, item) => {
                   if (typeof item !== 'undefined') {
