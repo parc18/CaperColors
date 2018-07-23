@@ -51,6 +51,7 @@ export default class BookEvent extends Component {
           name,
           priceId
         };
+        console.log(this.state.playerCount);
         this.setState({ playerCount });
       }
       this.checkStatustoShowNextButton();
@@ -122,6 +123,7 @@ export default class BookEvent extends Component {
         }
         return null;
       });
+      console.log(paymentObject);
       this.props.dispatch(getPaymentUrl(paymentObject)).catch(() => null);
     };
   }
@@ -163,13 +165,26 @@ export default class BookEvent extends Component {
     const { name, value } = e.target;
     this.setState({ [name]: value });
   };
-  createInputFields = (number, identity) => {
+  createInputFields = (number, identity, catId) => {
     const table = [];
     for (let i = 0; i < number; i += 1) {
       fakeCounter += 1;
-      table.push(<div key={fakeCounter}>
-        <input type="text" className={`${identity} ${styles.players}`} placeholder="Player Name" />
-      </div>);
+      if (catId >= 3 && catId <=5) {
+        table.push(<div><div key={fakeCounter}>
+          <input type="text" className={`${identity} ${styles.players}`} placeholder="Player 1 Name" />
+        </div>
+        <div key={fakeCounter*4}>
+          <input type="text" className={`${identity} ${styles.players}`} placeholder="Player 2 Name" />
+        </div></div>);
+      }else if (catId == 6){
+        table.push(<div key={fakeCounter}>
+          <input type="text" className={`${identity} ${styles.players}`} placeholder="Team Representative's Name" />
+        </div>);
+      }else {
+        table.push(<div key={fakeCounter}>
+          <input type="text" className={`${identity} ${styles.players}`} placeholder="Player Name" />
+        </div>);
+      }
     }
     return table;
   };
@@ -219,6 +234,7 @@ export default class BookEvent extends Component {
         <div className={styles.userPhone}>{this.renderPhoneField()} </div>
       </div>
       <div>
+        {console.log(this.state)}
         {this.state.playerCount &&
           Object.values(this.state.playerCount).map(item => {
             if (typeof item !== 'undefined' && this.state.playerCount[item.priceId] !== undefined && this.state.playerCount[item.priceId].qty !== 0) {
@@ -245,12 +261,13 @@ export default class BookEvent extends Component {
                       </button>
                     </div>
                   </div>
-                  <div>{this.createInputFields(this.state.playerCount[item.priceId].qty, item.priceId)}</div>
+                  <div>{this.createInputFields(this.state.playerCount[item.priceId].qty, item.priceId, item.catId)}</div>
                 </div>
               );
             }
             return null;
-          })}
+          })
+        }
       </div>
       <div className={styles.ctas}>
         <button className={styles1.eventShareStickyBtn} onClick={() => this.modifyPaymentDetails()}>
