@@ -4,5 +4,5 @@ module.exports = {
   3: 'Boys Doubles',
   4: 'Girls Doubles',
   5: 'Mixed Doubles',
-  6: 'Team matches'
+  6: 'Team Sports/Games'
 };

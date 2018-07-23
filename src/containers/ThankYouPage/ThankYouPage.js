@@ -32,6 +32,7 @@ export default class ThankYouPage extends Component {
   };
   render() {
     const styles = require('./ThankYouPage.scss');
+    console.log(this.state);
     // require the logo image both from client and server
     return (
       <div className={styles.home}>
@@ -47,9 +48,8 @@ export default class ThankYouPage extends Component {
               <img className={styles.thankyouImg} src="https://res.cloudinary.com/parc-india/image/upload/v1531665796/checkmark_rbbvmm.gif" alt="EventImage" />
             </div>
           )}
-          {!this.state.thankYouStatus &&
-            !this.state.thankYouStatus.data &&
-            !this.state.thankYouStatus.data === 'completed' && <div> Your tickets are on its way, you will get a SMS notification. Your transaction id is {txnId} </div>}
+          { this.state.thankYouStatus &&
+            this.state.thankYouStatus.error && <div> Your tickets are on its way, you will get a SMS notification. Your transaction id is {txnId} </div>}
         </div>
         <Link to="/">
           <button className={styles.nextButton}>Home &#8594;</button>
