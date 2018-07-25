@@ -10,6 +10,7 @@ import Navbar from 'react-bootstrap/lib/Navbar';
 import DropdownButton from 'react-bootstrap/lib/DropdownButton';
 import ButtonToolbar from 'react-bootstrap/lib/ButtonToolbar';
 import MenuItem from 'react-bootstrap/lib/MenuItem';
+import FormControl from 'react-bootstrap/lib/FormControl';
 
 import Nav from 'react-bootstrap/lib/Nav';
 import NavItem from 'react-bootstrap/lib/NavItem';
@@ -59,7 +60,9 @@ export default class App extends Component {
   static contextTypes = {
     store: PropTypes.object.isRequired
   };
-
+  state = {
+    currentCity: 'All Cities'
+  };
   componentWillReceiveProps(nextProps) {
     if (!this.props.user && nextProps.user) {
       // login
@@ -81,7 +84,8 @@ export default class App extends Component {
     event.preventDefault();
     this.props.logout();
   };
-  changeCity = id => {
+  changeCity = (id, citySelected) => {
+    this.setState({ currentCity: citySelected });
     this.context.store.dispatch(fillHome(id)).catch(() => null);
   };
   render() {
@@ -93,17 +97,20 @@ export default class App extends Component {
         <Navbar fixedTop>
           <Navbar.Header className={styles.Allheader}>
             <ButtonToolbar className={styles.cityDropDown}>
-              <DropdownButton title="All Cities" className={styles.cityDropDown} id="dropdown-size-medium">
-                <MenuItem eventKey="1" onClick={() => this.changeCity(1)}>
-                  Delhi1
+              <DropdownButton title={this.state.currentCity} pullRight id="bg-nested-dropdown">
+                <MenuItem eventKey="0" onClick={() => this.changeCity(0, 'All Cities')}>
+                  All Cities
                 </MenuItem>
-                <MenuItem eventKey="2" onClick={() => this.changeCity(2)}>
+                <MenuItem eventKey="1" onClick={() => this.changeCity(1, 'Delhi')}>
+                  Delhi
+                </MenuItem>
+                <MenuItem eventKey="2" onClick={() => this.changeCity(2, 'Pune')}>
                   Pune
                 </MenuItem>
-                <MenuItem eventKey="3" onClick={() => this.changeCity(3)}>
+                <MenuItem eventKey="3" onClick={() => this.changeCity(3, 'Bangalore')}>
                   Bangalore
                 </MenuItem>
-                <MenuItem eventKey="3" onClick={() => this.changeCity(4)}>
+                <MenuItem eventKey="3" onClick={() => this.changeCity(4, 'Mumbai')}>
                   Mumbai
                 </MenuItem>
               </DropdownButton>

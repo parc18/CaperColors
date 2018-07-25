@@ -20,12 +20,14 @@ export default class Home extends Component {
     return (
       <div className={styles.home}>
         <Helmet title="Home" />
-        <div className={styles.selectGame}>
-          <span>All</span>
-          <span>Badminton</span>
-          <span>Table Tennis</span>
-          <span>Football</span>
-          <span>Cricket</span>
+        <div className={styles.gameFixed}>
+          <div className={styles.selectGame}>
+            <span>All</span>
+            <span>Badminton</span>
+            <span>Table Tennis</span>
+            <span>Football</span>
+            <span>Cricket</span>
+          </div>
         </div>
         <div>
           <div className={styles.container}>
