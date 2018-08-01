@@ -169,18 +169,17 @@ export default class BookEvent extends Component {
     const table = [];
     for (let i = 0; i < number; i += 1) {
       fakeCounter += 1;
-      if (catId >= 3 && catId <=5) {
+      if (catId >= 3 && catId <= 5) {
         table.push(<div><div key={fakeCounter}>
           <input type="text" className={`${identity} ${styles.players}`} placeholder="Player 1 Name" />
-        </div>
-        <div key={fakeCounter*4}>
+        </div> <div key={fakeCounter * 4}>
           <input type="text" className={`${identity} ${styles.players}`} placeholder="Player 2 Name" />
         </div></div>);
-      }else if (catId == 6){
+      } else if (catId === 6) {
         table.push(<div key={fakeCounter}>
           <input type="text" className={`${identity} ${styles.players}`} placeholder="Team Representative's Name" />
         </div>);
-      }else {
+      } else {
         table.push(<div key={fakeCounter}>
           <input type="text" className={`${identity} ${styles.players}`} placeholder="Player Name" />
         </div>);

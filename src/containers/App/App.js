@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+import { PropTypes } from 'prop-types';
+import cookie from 'js-cookie';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 import { push } from 'react-router-redux';
@@ -10,8 +11,6 @@ import Navbar from 'react-bootstrap/lib/Navbar';
 import DropdownButton from 'react-bootstrap/lib/DropdownButton';
 import ButtonToolbar from 'react-bootstrap/lib/ButtonToolbar';
 import MenuItem from 'react-bootstrap/lib/MenuItem';
-import FormControl from 'react-bootstrap/lib/FormControl';
-
 import Nav from 'react-bootstrap/lib/Nav';
 import NavItem from 'react-bootstrap/lib/NavItem';
 import Alert from 'react-bootstrap/lib/Alert';
@@ -20,14 +19,21 @@ import { isHomeLoaded as isHomeFilled, getEventsBycityId as fillHome } from 'red
 import { isLoaded as isAuthLoaded, load as loadAuth, logout } from 'redux/modules/auth';
 import { Notifs } from 'components';
 import config from 'config';
+import city from '../../helpers/cities';
 
 @provideHooks({
-  fetch: async ({ store: { dispatch, getState } }) => {
+  fetch: async ({ store: { dispatch, getState, providers } }) => {
+    console.log(providers);
     if (!isAuthLoaded(getState())) {
       await dispatch(loadAuth()).catch(() => null);
     }
     if (!isHomeFilled(getState())) {
-      await dispatch(fillHome(-1)).catch(() => null);
+      if (cookie.get('city')) {
+        await dispatch(fillHome(cookie.get('city'))).catch(() => null);
+      } else {
+        cookie.set('city', -1, 30);
+        await dispatch(fillHome(-1)).catch(() => null);
+      }
     }
   }
 })
@@ -61,7 +67,7 @@ export default class App extends Component {
     store: PropTypes.object.isRequired
   };
   state = {
-    currentCity: 'All Cities'
+    currentCity: city[cookie.get('city')] || 'All Cities'
   };
   componentWillReceiveProps(nextProps) {
     if (!this.props.user && nextProps.user) {
@@ -85,6 +91,7 @@ export default class App extends Component {
     this.props.logout();
   };
   changeCity = (id, citySelected) => {
+    cookie.set('city', id, 30);
     this.setState({ currentCity: citySelected });
     this.context.store.dispatch(fillHome(id)).catch(() => null);
   };
