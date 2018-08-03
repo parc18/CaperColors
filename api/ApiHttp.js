@@ -9,7 +9,11 @@ const getJavaUrl = (context, params) => {
       url += '/ping';
       break;
     case 'events':
-      url += `/event?city_id=${params}`;
+      if (params.length > 1) {
+        url += `/event?city_id=${params[0]}&game_id=${params[1]}`;
+      } else {
+        url += `/event?city_id=${params}`;
+      }
       break;
     case 'prices':
       url += `/event_prices?event_id=${params}`;

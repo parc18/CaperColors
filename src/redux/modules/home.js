@@ -43,3 +43,9 @@ export function getEventsBycityId(cityId) {
   };
 }
 
+export function getEventsBycityIdandGameId(cityId, gameId) {
+  return {
+    types: [HOME_REQUEST, HOME_SUCCESS, HOME_FAILURE],
+    promise: ({ client }) => client.get(`/home/getEvents/${cityId}/${gameId}`)
+  };
+}

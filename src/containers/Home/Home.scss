@@ -15,7 +15,7 @@
     overflow-x: scroll;
     overflow-y: hidden;
     white-space: nowrap;
-    padding: 10px;
+    padding: 10px 0px 0px 0px;
     background-color: #fff;
     margin-bottom: 10px;
     span {
@@ -83,5 +83,22 @@
   padding: 0 10px;
   max-width: 1200px;
   margin: auto;
-  margin-top: 100px;
+  margin-top: 121px;
+}
+.gameTypes {
+  height: 17px;
+  width: 85px;
+  color: #5578A3;
+  font-family: "Lucida Grande";
+  font-size: 14px;
+  line-height: 17px;
+  float: left;
+  margin-right: 22px;
+  text-align: center;
+  padding-top: 15px;
+  padding-bottom: 25px;
+}
+.selectedGame {
+  color: #EF6C30;
+  border-bottom: 2px solid;
 }

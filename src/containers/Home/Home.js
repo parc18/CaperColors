@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import cookie from 'js-cookie';
 import { Card } from 'components';
 import Helmet from 'react-helmet';
 import { connect } from 'react-redux';
+import { getEventsBycityIdandGameId as getSports } from 'redux/modules/home';
 
 @connect(state => ({
   online: state.online,
@@ -10,9 +12,26 @@ import { connect } from 'react-redux';
 }))
 export default class Home extends Component {
   static propTypes = {
-    home: PropTypes.shape(Object).isRequired
+    home: PropTypes.shape(Object).isRequired,
+    dispatch: PropTypes.func.isRequired
     // match: PropTypes.arrayOf(PropTypes.array).isRequired
   };
+  constructor(props) {
+    super(props);
+    this.selectSports = sportsId => {
+      let cityId = 0;
+      if (typeof cookie.get('city') !== 'undefined') {
+        cityId = cookie.get('city');
+      }
+      this.props.dispatch(getSports(cityId, sportsId)).catch(() => null);
+      this.setState({
+        gameId: sportsId
+      });
+    };
+  }
+  state = {
+    gameId: 0
+  }
   render() {
     const { home } = this.props;
     const styles = require('./Home.scss');
@@ -22,11 +41,10 @@ export default class Home extends Component {
         <Helmet title="Home" />
         <div className={styles.gameFixed}>
           <div className={styles.selectGame}>
-            <span>All</span>
-            <span>Badminton</span>
-            <span>Table Tennis</span>
-            <span>Football</span>
-            <span>Cricket</span>
+            <div className={`${styles.gameTypes} ${this.state.gameId === 0 ? styles.selectedGame : ''}`} role="presentation" onClick={() => this.selectSports(0)}>All</div>
+            <div className={`${styles.gameTypes} ${this.state.gameId === 1 ? styles.selectedGame : ''}`} role="presentation" onClick={() => this.selectSports(1)}>Badminton</div>
+            <div className={`${styles.gameTypes} ${this.state.gameId === 2 ? styles.selectedGame : ''}`} role="presentation" onClick={() => this.selectSports(2)}>Table Tennis</div>
+           
           </div>
         </div>
         <div>

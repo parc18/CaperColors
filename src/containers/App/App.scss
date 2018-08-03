@@ -48,3 +48,84 @@ body {
   color: #fff !important;
   border: none !important;
 }
+.head {
+  background-color: #0B2340;
+  height: 60px;
+  padding: 3px 10px;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 9;
+  .imgLogo {
+    float: left;
+    margin-top: 5px;
+  }
+  .menuIcon {
+    float: right;
+    color: #fff;
+    margin-top: 11px;
+    margin-right: 29px;
+    position: relative;
+  }
+}
+.caperMenu:before, .faCaperMenu:before, .faCapermenuBar:before {
+  content: "\F0C9";
+    font-size: 26px;
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.25em;
+    width: 21px;
+    height: 0.15em;
+    background: #fff;
+    box-shadow: 0 0.25em 0 0 #fff, 0 0.5em 0 0 #fff;
+}
+.oval {
+  height: 26px;
+  width: 24px;
+  opacity: 0.2;
+  background-color: #FFFFFF;
+  float: left;
+  width: 7%;
+  position: relative;
+  left: 30%;
+  top: 13px;
+  border-radius: 13px;
+}
+ul {
+  list-style-type: none;
+}
+
+.dDWrapper {
+    width: 59%;
+    float: left;
+    position: relative;
+    left: 37%;
+    top: 17px;
+    color: #FFFFFF;
+    font-family: "Lucida Grande";
+    font-size: 14px;
+}
+.dDHeader {
+  position: relative;
+  left: -6%;
+  width: 60%
+}
+.dDList {
+  padding: 8px 15px;
+  position: relative;
+  margin-left: 10xp;
+  left: -12%;
+  background-color: #0B2340;
+  line-height: 28px;
+}
+.fa {
+  font-size:24px;
+  color: #fff;
+}
+.arrow {
+  font-size: 19px;
+  position: relative;
+  left: 8px;
+  font-weight: 600;
+}
