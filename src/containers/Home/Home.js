@@ -31,7 +31,7 @@ export default class Home extends Component {
   }
   state = {
     gameId: 0
-  }
+  };
   render() {
     const { home } = this.props;
     const styles = require('./Home.scss');
@@ -41,10 +41,15 @@ export default class Home extends Component {
         <Helmet title="Home" />
         <div className={styles.gameFixed}>
           <div className={styles.selectGame}>
-            <div className={`${styles.gameTypes} ${this.state.gameId === 0 ? styles.selectedGame : ''}`} role="presentation" onClick={() => this.selectSports(0)}>All</div>
-            <div className={`${styles.gameTypes} ${this.state.gameId === 1 ? styles.selectedGame : ''}`} role="presentation" onClick={() => this.selectSports(1)}>Badminton</div>
-            <div className={`${styles.gameTypes} ${this.state.gameId === 2 ? styles.selectedGame : ''}`} role="presentation" onClick={() => this.selectSports(2)}>Table Tennis</div>
-           
+            <div className={`${styles.gameTypes} ${this.state.gameId === 0 ? styles.selectedGame : ''}`} role="presentation" onClick={() => this.selectSports(0)}>
+              All
+            </div>
+            <div className={`${styles.gameTypes} ${this.state.gameId === 1 ? styles.selectedGame : ''}`} role="presentation" onClick={() => this.selectSports(1)}>
+              Badminton
+            </div>
+            <div className={`${styles.gameTypes} ${this.state.gameId === 2 ? styles.selectedGame : ''}`} role="presentation" onClick={() => this.selectSports(2)}>
+              Table Tennis
+            </div>
           </div>
         </div>
         <div>
