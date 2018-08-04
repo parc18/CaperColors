@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 // eslint-disable-next-line react/prefer-stateless-function
 export default class Refund extends Component {
   render() {
-    // const style = require('./About.scss');
+    const styles = require('./Refund.scss');
     return (
-      <div>
-        CANCELLATION AND REFUND POLICY
+      <div className={styles.allCont}>
+        <div className={styles.headings}>CANCELLATION AND REFUND POLICY </div>
         We thank you and appreciate your purchase with us on www.khelacademy.com (“Website”) and/ or the application Khelacademy.
         Please read the policy, conditions and process carefully as they will give you important information and guidelines about your
         rights and obligations as our customer, concerning any purchase you make through us unless specifically stated otherwise on

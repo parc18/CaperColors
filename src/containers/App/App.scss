@@ -56,29 +56,31 @@ body {
   top: 0;
   width: 100%;
   z-index: 9;
-  .imgLogo {
-    float: left;
-    margin-top: 5px;
-  }
-  .menuIcon {
-    float: right;
-    color: #fff;
-    margin-top: 11px;
-    margin-right: 29px;
-    position: relative;
-  }
 }
+.imgLogo {
+  float: left;
+  margin-top: 5px;
+}
+.menuIcon {
+  float: right;
+  color: #fff;
+  margin-top: 11px;
+  margin-right: 29px;
+  position: relative;
+  }
 .caperMenu:before, .faCaperMenu:before, .faCapermenuBar:before {
   content: "\F0C9";
-    font-size: 26px;
-    content: "";
-    position: absolute;
-    left: 0;
-    top: 0.25em;
-    width: 21px;
-    height: 0.15em;
-    background: #fff;
-    box-shadow: 0 0.25em 0 0 #fff, 0 0.5em 0 0 #fff;
+  font-size: 26px;
+  content: "";
+  position: fixed;
+  /* left: -5px; */
+  top: 20px;
+  right: 22px;
+  z-index: 99;
+  width: 20px;
+  height: 0.15em;
+  background: #fff;
+  box-shadow: 0 0.25em 0 0 #fff, 0 0.5em 0 0 #fff;
 }
 .oval {
   height: 26px;
@@ -128,4 +130,109 @@ ul {
   position: relative;
   left: 8px;
   font-weight: 600;
+}
+.overlay{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 999999;
+  z-index: 10;
+  background-color: #EF6C30;
+}
+.NotlowerOveray {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 60%;
+  z-index: 999999;
+  z-index: 10;
+  background-color: #0B2340;
+}
+.cross {
+  font-size: 42px;
+  position: fixed;
+  right: 0;
+  top: 0;
+  /* font-weight: 600; */
+  background-color: #3B4F66;
+  padding: 9px 22px 17px 25px;
+  z-index: 99;
+}
+.oval2 {
+  height: 40px;
+  width: 24px;
+  opacity: 0.2;
+  background-color: #FFFFFF;
+  float: left;
+  width: 40px;
+  position: relative;
+  left: 17%;
+  top: 13px;
+  border-radius: 20px;
+}
+
+.overlayContent {
+  position: absolute;
+  text-align: 107px;
+  width: 100%;
+  text-align: center;
+  top: 24%;
+}
+.overlayContent2 {
+  position: absolute;
+  text-align: 107px;
+  width: 100%;
+  text-align: center;
+  top: 39%;
+}
+.organiser {
+  width: 61%;
+  color: #FFFFFF;
+  font-family: cursive;
+  font-size: 24px;
+  font-weight: bold;
+  line-height: 29px;
+  position: relative;
+  left: 28%;
+  text-align: left;
+  top: 18px;
+}
+.Sponsers {
+  width: 61%;
+  color: #FFFFFF;
+  font-family: cursive;
+  font-size: 24px;
+  font-weight: bold;
+  line-height: 29px;
+  position: relative;
+  left: 28%;
+  text-align: left;
+  top: 18px;
+}
+.menuHeaderItems {
+  width: 50px;
+  color: #FFFFFF;
+  font-family: "Lucida Grande";
+  font-size: 16px;
+  line-height: 18px;
+  position: relative;
+  top: 485px;
+  left: 20%;
+  width: 100%;
+  margin-top: 26px;
+}
+.ovalLast {
+  height: 24px;
+  width: 24px;
+  opacity: 0.2;
+  background-color: #FFFFFF;
+  float: left;
+  width: 24px;
+  position: absolute;
+  left: -9%;
+  top: 0px;
+  border-radius: 15px;
 }

@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 // eslint-disable-next-line react/prefer-stateless-function
 export default class Vision extends Component {
   render() {
-    // const style = require('./About.scss');
+    const styles = require('./Vision.scss');
     return (
-      <div>
-        OUR VISION
+      <div className={styles.allCont}>
+        <div className={styles.headings}>OUR VISION </div>
         The aim of the Khelacademy to curate a sportive image among the participants and the ardent followers of sports.
         Khelacademy has a vision of boosting and increasing the sports culture in everyone by creating a greater
         emphasize toward the sports manifesto and bringing out the inner sportsmanship.

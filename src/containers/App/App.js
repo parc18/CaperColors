@@ -3,14 +3,13 @@ import { PropTypes } from 'prop-types';
 import cookie from 'js-cookie';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
+import { IndexLinkContainer } from 'react-router-bootstrap';
 import { push } from 'react-router-redux';
 import { renderRoutes } from 'react-router-config';
 import { provideHooks } from 'redial';
-import Alert from 'react-bootstrap/lib/Alert';
 import Helmet from 'react-helmet';
 import { isHomeLoaded as isHomeFilled, getEventsBycityId as fillHome } from 'redux/modules/home';
 import { isLoaded as isAuthLoaded, load as loadAuth, logout } from 'redux/modules/auth';
-import { Notifs } from 'components';
 import config from 'config';
 import city from '../../helpers/cities';
 @provideHooks({
@@ -39,20 +38,9 @@ export default class App extends Component {
   static propTypes = {
     route: PropTypes.objectOf(PropTypes.any).isRequired,
     location: PropTypes.objectOf(PropTypes.any).isRequired,
-    user: PropTypes.shape({
-      email: PropTypes.string
-    }),
-    notifs: PropTypes.shape({
-      global: PropTypes.array
-    }).isRequired,
     logout: PropTypes.func.isRequired,
     pushState: PropTypes.func.isRequired
   };
-
-  static defaultProps = {
-    user: null
-  };
-
   static contextTypes = {
     store: PropTypes.object.isRequired
   };
@@ -62,16 +50,6 @@ export default class App extends Component {
   };
   componentDidMount() {
     window.addEventListener('scroll', this.handleScroll);
-  }
-  componentWillReceiveProps(nextProps) {
-    if (!this.props.user && nextProps.user) {
-      // login
-      const redirect = this.props.location.query && this.props.location.query.redirect;
-      this.props.pushState(redirect || '/login-success');
-    } else if (this.props.user && !nextProps.user) {
-      // logout
-      this.props.pushState('/');
-    }
   }
   componentDidUpdate(prevProps) {
     if (this.props.location !== prevProps.location) {
@@ -83,7 +61,8 @@ export default class App extends Component {
   }
   handleClickOutside = () => {
     this.setState({
-      listOpen: false
+      listOpen: false,
+      menuOpen: false
     });
   };
   handleScroll = () => {
@@ -108,17 +87,24 @@ export default class App extends Component {
       listOpen: !prevState.listOpen
     }));
   }
+  toggleMenu() {
+    this.setState(prevState => ({
+      menuOpen: !prevState.menuOpen
+    }));
+  }
   render() {
-    const { notifs, route } = this.props;
+    const { route } = this.props;
     const styles = require('./App.scss');
     return (
       <div className={styles.app}>
         <Helmet {...config.app.head} />
         <header className={styles.head}>
-          <div className={styles.imgLogo}>
-            {' '}
-            <img src="http://res.cloudinary.com/parc-india/image/upload/c_scale,w_29/v1528536871/mjbfldjaluptlybuzetr.png" alt="khelacademy logo" />{' '}
-          </div>
+          <IndexLinkContainer to="/">
+            <div className={styles.imgLogo}>
+              {' '}
+              <img src="http://res.cloudinary.com/parc-india/image/upload/c_scale,w_29/v1528536871/mjbfldjaluptlybuzetr.png" alt="khelacademy logo" />{' '}
+            </div>
+          </IndexLinkContainer>
           <div className={styles.oval} />
           <div className={styles.dDWrapper} onBlur={this.handleClickOutside}>
             <div className={styles.dDHeader}>
@@ -155,21 +141,44 @@ export default class App extends Component {
               </ul>
             )}
           </div>
-          <div className={styles.menuIcon}>
-            {' '}
-            <i className={`${styles.faCaperMenu} ${styles.faCapermenuBar} ${styles.caperMenu}`} />{' '}
-          </div>
         </header>
-
+        <div className={styles.menuIcon} onClick={() => this.toggleMenu()} role="presentation">
+          {' '}
+          {!this.state.menuOpen ? <i className={`${styles.faCaperMenu} ${styles.faCapermenuBar} ${styles.caperMenu}`} /> : <i className={`${styles.cross} fa }`}>&times;</i>}
+          {' '}
+        </div>
         <div className={styles.appContent}>
-          {notifs.global && (
-            <div className="">
-              <Notifs className={styles.notifs} namespace="global" NotifComponent={props => <Alert bsStyle={props.kind}>{props.message}</Alert>} />
-            </div>
-          )}
-
           {renderRoutes(route.routes)}
         </div>
+        {this.state.menuOpen &&
+          <div className={styles.overlay}>
+            <div className={styles.NotlowerOveray}>
+              <div className={styles.overlayContent}>
+                <div className={styles.oval2} />
+                <div className={styles.organiser}> Organizers  &nbsp; &nbsp; &nbsp; &#8594;</div>
+              </div>
+              <div className={styles.overlayContent2}>
+                <div className={styles.oval2} />
+                <div className={styles.Sponsers}> Sponsers  &nbsp; &nbsp; &nbsp; &#8594;</div>
+              </div>
+              <IndexLinkContainer to="/about" onClick={() => this.toggleMenu()}>
+                <div className={styles.menuHeaderItems}> <div className={styles.ovalLast} /> About Us</div>
+              </IndexLinkContainer>
+              <IndexLinkContainer to="/vision" onClick={() => this.toggleMenu()}>
+                <div className={styles.menuHeaderItems}> <div className={styles.ovalLast} />Our Vision</div>
+              </IndexLinkContainer>
+              <IndexLinkContainer to="/refund" onClick={() => this.toggleMenu()}>
+                <div className={styles.menuHeaderItems}> <div className={styles.ovalLast} />Cancellations and Refund Policy</div>
+              </IndexLinkContainer>
+              <IndexLinkContainer to="/privacy" onClick={() => this.toggleMenu()}>
+                <div className={styles.menuHeaderItems}> <div className={styles.ovalLast} />Privacy Policy</div>
+              </IndexLinkContainer>
+              <IndexLinkContainer to="/terms" onClick={() => this.toggleMenu()}>
+                <div className={styles.menuHeaderItems}> <div className={styles.ovalLast} />Terms of Service</div>
+              </IndexLinkContainer>
+            </div>
+          </div>
+        }
       </div>
     );
   }
