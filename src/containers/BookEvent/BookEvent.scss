@@ -4,7 +4,7 @@
 }
 
 .selectGameType {
-	width: auto;
+	width: 100%;
     overflow-x: scroll;
     overflow-y: hidden;
     white-space: nowrap;
@@ -15,7 +15,7 @@
       color: #898989;
     }
     .category {
-        font-family: Aller;
+        font-family: -webkit-pictograph;;
         font-size: 14px;
         font-weight: bold;
         line-height: 16px;
