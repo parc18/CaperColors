@@ -3,9 +3,13 @@
     position: relative;
     float: left;
     width: 31%;
-    border: 1px solid #000;
     color: #000;
     margin: 1% 1%;
+    //box-shadow: 5px 5px 5px #D2D2D2;
+    transition: all 200ms ease-out;
+}
+.box:hover {
+    box-shadow: 5px 5px 5px #D3D3D3;
 }
 .eventImg {
 	width: 100%;
@@ -23,7 +27,7 @@
 	}
 	.eventName {
 		color: #FFFFFF;
-		font-family: "Lucida Grande";
+		font-family: 'Allerta', sans-serif;
 		font-size: 20px;
 		line-height: 23px;
 		position: absolute;
@@ -40,7 +44,7 @@
 	}
 	.city {
 		color: #0B2340;
-		font-family: "Lucida Grande";
+		font-family: 'Allerta', sans-serif;
 		font-size: 12px;
 		line-height: 15px;
 		margin-right: 13px;
@@ -58,7 +62,7 @@
 	}
 	.pdpDetails {
 		color: #EF6C30;
-		// font-family: Aller;
+		font-family: 'Allerta', sans-serif;
 		font-size: 14px;
 		line-height: 16px;
 		float: right;
@@ -93,7 +97,7 @@
 		}
 		.eventName {
 			color: #FFFFFF;
-			font-family: "Lucida Grande";
+			font-family: 'Allerta', sans-serif;
 			font-size: 20px;
 			line-height: 23px;
 			position: absolute;
@@ -111,7 +115,7 @@
 		}
 		.city {
 			color: #0B2340;
-			font-family: "Lucida Grande";
+			font-family: 'Allerta', sans-serif;
 			font-size: 12px;
 			line-height: 15px;
 			margin-right: 13px;
@@ -129,7 +133,7 @@
 		}
 		.pdpDetails {
 			color: #EF6C30;
-			// font-family: Aller;
+			font-family: 'Allerta', sans-serif;
 			font-size: 14px;
 			line-height: 16px;
 			float: right;

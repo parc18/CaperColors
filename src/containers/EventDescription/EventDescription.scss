@@ -1,3 +1,4 @@
+@import url(https://fonts.googleapis.com/css?family=Allerta);
 .container {
     max-width: 1200px;
     margin: auto;
@@ -25,7 +26,7 @@
         height: 70px;
         width: 179px;
         color: #FFFFFF;
-        font-family: "Lucida Grande";
+        font-family: 'Allerta', sans-serif;
         font-size: 30px;
         line-height: 35px;
     }   
@@ -55,7 +56,7 @@
     	    height: 70px;
     	    width: 179px;
     	    color: #FFFFFF;
-    	    font-family: "Lucida Grande";
+    	    font-family: 'Allerta', sans-serif;
     	    font-size: 30px;
     	    line-height: 35px;
     	}	
@@ -66,7 +67,7 @@
     background: #ffffff;
     color: #EF6C30;
     height: 50px;
-   	font-family: "Lucida Grande";
+   	font-family: 'Allerta', sans-serif;
    	font-size: 14px;
    	border: none;
 }
@@ -75,7 +76,7 @@
     background: #ed6b0a;
     color: #fff;
     height: 50px;
-   	font-family: "Lucida Grande";
+   	font-family: 'Allerta', sans-serif;
    	font-size: 14px;
    	border: none;
 }
@@ -100,7 +101,7 @@
     color: #0B2340;
     font-size: 12px;
     padding-top: 13px;
-    font-family: "Lucida Grande";
+    font-family: 'Allerta', sans-serif;
 }
 .bott {
 	border-bottom: 1px solid #e2e2e2;
@@ -120,7 +121,7 @@
     text-align: justify;
     text-justify: inter-word;
     padding-top: 10px;
-    font-family: "Lucida Grande";
+    font-family: 'Allerta', sans-serif;
     background-color: #F2F2F2;
 }
 

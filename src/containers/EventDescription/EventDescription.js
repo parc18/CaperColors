@@ -15,7 +15,8 @@ export default class EventDescription extends Component {
     match: PropTypes.objectOf(PropTypes.any).isRequired
   };
   state = {
-    home: this.props.home.data[this.props.match.params.eventId]
+    home: this.props.home.data[this.props.match.params.eventId],
+    pageType: "EDP"
   };
   createMarkup() {
     return { __html: this.state.home.description };
@@ -47,11 +48,11 @@ export default class EventDescription extends Component {
             </div>
             <div className={styles.eventDesc} dangerouslySetInnerHTML={this.createMarkup()} />
             <div className={styles.buttons}>
-              <a href={`whatsapp://send?text="${this.state.home.eventId}"`} data-action="share/whatsapp/share">
+              <a href={`whatsapp://send?text=https://www.khelacademy.com/eventdetails/${this.state.home.eventId}`} data-action="share/whatsapp/share">
                 <button className={styles.eventShareStickyBtn}>Share</button>
               </a>
               <Link to={`/bookevent/${this.state.home.eventId}`}>
-                <button className={styles.eventBookStickyBtn}>Book Now &#8594;</button>
+                <button className={styles.eventBookStickyBtn}>Register Now &#8594;</button>
               </Link>
             </div>
           </div>

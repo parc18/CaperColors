@@ -11,7 +11,8 @@ export default function home(state = initialState, action = {}) {
     case HOME_REQUEST:
       return {
         ...state,
-        homeLoading: true
+        homeLoading: true,
+        pageType: "HOME"
       };
     case HOME_SUCCESS:
       return {

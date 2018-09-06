@@ -29,7 +29,8 @@ import city from '../../helpers/cities';
 })
 @connect(
   state => ({
-    notifs: state.notifs
+    notifs: state.notifs,
+    home: state.home
   }),
   { logout, pushState: push }
 )
@@ -46,7 +47,8 @@ export default class App extends Component {
   };
   state = {
     currentCity: city[cookie.get('city')] || 'All Cities',
-    listOpen: false
+    listOpen: false,
+    pageType: this.props.home.pageType
   };
   componentDidMount() {
     window.addEventListener('scroll', this.handleScroll);
@@ -93,7 +95,8 @@ export default class App extends Component {
     }));
   }
   render() {
-    const { route } = this.props;
+    console.log(this.props);
+    const { route, location } = this.props;
     const styles = require('./App.scss');
     return (
       <div className={styles.app}>
@@ -102,45 +105,52 @@ export default class App extends Component {
           <IndexLinkContainer to="/">
             <div className={styles.imgLogo}>
               {' '}
-              <img src="https://res.cloudinary.com/parc-india/image/upload/c_scale,w_29/v1528536871/mjbfldjaluptlybuzetr.png" alt="khelacademy logo" />{' '}
+              <img src="http://res.cloudinary.com/parc-india/image/upload/c_scale,w_30/v1536268528/khelAcademy_logo_with_border_odzemk.png" alt="khelacademy logo" />{' '}
             </div>
           </IndexLinkContainer>
-          <div className={styles.oval} />
-          <div className={styles.dDWrapper} onBlur={this.handleClickOutside}>
-            <div className={styles.dDHeader}>
-              <div className="dd-header-title" onClick={() => this.toggleList()} role="presentation">
-                {this.state.currentCity}
-                {this.state.listOpen ? <i className={`${styles.arrow} fa }`}>&#xf106;</i> : <i className={`${styles.arrow} fa }`}>&#xf107;</i>}
+          { location.pathname === "/" &&
+            <div>
+              <div className={styles.oval} />
+              <div className={styles.dDWrapper} onBlur={this.handleClickOutside}>
+                <div className={styles.dDHeader}>
+                  <div className="dd-header-title" onClick={() => this.toggleList()} role="presentation">
+                    {this.state.currentCity}
+                    {this.state.listOpen ? <i className={`${styles.arrow} fa }`}>&#xf106;</i> : <i className={`${styles.arrow} fa }`}>&#xf107;</i>}
+                  </div>
+                </div>
+                {this.state.listOpen && (
+                  <ul className={styles.dDList}>
+                    <li className="dd-list-item" onClick={() => this.changeCity(0, 'All Cities')} role="presentation">
+                      {' '}
+                      All Cities
+                    </li>
+                    <li className="dd-list-item" onClick={() => this.changeCity(1, 'New Delhi')} role="presentation">
+                      {' '}
+                      New Delhi
+                    </li>
+                    <li className="dd-list-item" onClick={() => this.changeCity(2, 'Haryana (Gurgaon)')} role="presentation">
+                      Haryana (Gurgaon)
+                    </li>
+                    <li className="dd-list-item" onClick={() => this.changeCity(3, 'Uttar Pradesh (Ghaziabad)')} role="presentation">
+                      Uttar Pradesh (Ghaziabad)
+                    </li>
+                    <li className="dd-list-item" onClick={() => this.changeCity(5, 'Bangalore')} role="presentation">
+                      Bangalore
+                    </li>
+                    <li className="dd-list-item" onClick={() => this.changeCity(4, 'Uttar Pradesh (Noida)')} role="presentation">
+                      Uttar Pradesh (Noida)
+                    </li>
+                    <li className="dd-list-item" onClick={() => this.changeCity(6, 'Uttar Pradesh (Greater Noida)')} role="presentation">
+                      Uttar Pradesh (Greater Noida)
+                    </li>
+                  </ul>
+                )}
               </div>
             </div>
-            {this.state.listOpen && (
-              <ul className={styles.dDList}>
-                <li className="dd-list-item" onClick={() => this.changeCity(0, 'All Cities')} role="presentation">
-                  {' '}
-                  All Cities
-                </li>
-                <li className="dd-list-item" onClick={() => this.changeCity(1, 'New Delhi')} role="presentation">
-                  {' '}
-                  New Delhi
-                </li>
-                <li className="dd-list-item" onClick={() => this.changeCity(2, 'Haryana (Gurgaon)')} role="presentation">
-                  Haryana (Gurgaon)
-                </li>
-                <li className="dd-list-item" onClick={() => this.changeCity(3, 'Uttar Pradesh (Ghaziabad)')} role="presentation">
-                  Uttar Pradesh (Ghaziabad)
-                </li>
-                <li className="dd-list-item" onClick={() => this.changeCity(5, 'Bangalore')} role="presentation">
-                  Bangalore
-                </li>
-                <li className="dd-list-item" onClick={() => this.changeCity(4, 'Uttar Pradesh (Noida)')} role="presentation">
-                  Uttar Pradesh (Noida)
-                </li>
-                <li className="dd-list-item" onClick={() => this.changeCity(6, 'Uttar Pradesh (Greater Noida)')} role="presentation">
-                  Uttar Pradesh (Greater Noida)
-                </li>
-              </ul>
-            )}
-          </div>
+          }
+          { location.pathname !== "/" &&
+            <div className={styles.mainText}> Khelacademy </div>
+          }
         </header>
         <div className={styles.menuIcon} onClick={() => this.toggleMenu()} role="presentation">
           {' '}
