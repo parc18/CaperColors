@@ -24,6 +24,12 @@ const getJavaUrl = (context, params) => {
     case 'thankyou':
       url += `/payment_status?paymentId=${params}`;
       break;
+    case 'cities':
+      url += '/cities';
+      break;
+    case 'sports':
+      url += '/sports';
+      break;
     // no default
   }
   return {

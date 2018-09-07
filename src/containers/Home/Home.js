@@ -5,19 +5,23 @@ import { Card } from 'components';
 import Helmet from 'react-helmet';
 import { connect } from 'react-redux';
 import { getEventsBycityIdandGameId as getSports } from 'redux/modules/home';
+import { getAllSports as getActiveSports } from 'redux/modules/sports';
 
 @connect(state => ({
   online: state.online,
-  home: state.home
+  home: state.home,
+  sports: state.sports
 }))
 export default class Home extends Component {
   static propTypes = {
     home: PropTypes.shape(Object).isRequired,
-    dispatch: PropTypes.func.isRequired
+    dispatch: PropTypes.func.isRequired,
+    sports: PropTypes.shape(Object).isRequired
     // match: PropTypes.arrayOf(PropTypes.array).isRequired
   };
   constructor(props) {
     super(props);
+    this.props.dispatch(getActiveSports()).catch(() => null);
     this.selectSports = sportsId => {
       let cityId = 0;
       if (typeof cookie.get('city') !== 'undefined') {
@@ -33,7 +37,8 @@ export default class Home extends Component {
     gameId: 0
   };
   render() {
-    const { home } = this.props;
+    const { home, sports } = this.props;
+    console.log(sports, "KAALI");
     const styles = require('./Home.scss');
     // require the logo image both from client and server
     return (
@@ -44,12 +49,16 @@ export default class Home extends Component {
             <div className={`${styles.gameTypes} ${this.state.gameId === 0 ? styles.selectedGame : ''}`} role="presentation" onClick={() => this.selectSports(0)}>
               All
             </div>
-            <div className={`${styles.gameTypes} ${this.state.gameId === 1 ? styles.selectedGame : ''}`} role="presentation" onClick={() => this.selectSports(1)}>
-              Badminton
-            </div>
-            <div className={`${styles.gameTypes} ${this.state.gameId === 2 ? styles.selectedGame : ''}`} role="presentation" onClick={() => this.selectSports(2)}>
-              Table Tennis
-            </div>
+              { sports && sports.data && typeof sports.data !== 'undefined' && Object.keys(sports.data).map((index,item) => {
+                if (typeof item !== 'undefined') {
+                  return (
+                    <div className={`${styles.gameTypes} key=${sports.data[index].sportsId} ${this.state.gameId === sports.data[index].sportsId ? styles.selectedGame : ''}`} role="presentation" onClick={() => this.selectSports(sports.data[index].sportsId)}>
+                      {sports.data[index].sportsName}
+                    </div>
+                  );
+                }
+                return null;
+              })}
           </div>
         </div>
         <div>

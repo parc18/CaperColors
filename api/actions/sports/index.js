@@ -1,0 +1,1 @@
+export getSports from './getSports';
