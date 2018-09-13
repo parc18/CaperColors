@@ -1,4 +1,7 @@
 @import url(https://fonts.googleapis.com/css?family=Allerta);
+html {
+  height: 100%;
+}
 body {
   background-color: #f6f6f6;
 }
@@ -67,10 +70,13 @@ body {
 .menuIcon {
   float: right;
   color: #fff;
-  margin-top: 11px;
-  margin-right: 29px;
   position: relative;
-  }
+  height: 47px;
+  top: -120px;
+  z-index: 999;
+  width: 45px;
+  cursor: pointer;
+}
 .caperMenu:before, .faCaperMenu:before, .faCapermenuBar:before {
   content: "\F0C9";
   font-size: 26px;
@@ -250,4 +256,10 @@ ul {
   margin-top: 12px;
   font-size: 19px;
   margin-left: 44px;
+}
+@media (min-width: 900px) {
+  .cityCont {
+    width: 300px;
+    float: right;
+  }
 }

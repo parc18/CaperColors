@@ -42,9 +42,13 @@ export default class EventDescription extends Component {
               <span className={styles.box} />
               {edpTime(this.state.home.date)}, {this.state.home.timings}
             </div>
-            <div className={styles.details}>
+            <div className={`${styles.details} ${styles.bott}`}>
               <span className={styles.box} />
               Rs {this.state.home.price} onwards
+            </div>
+            <div className={styles.details}>
+              <span className={styles.box} />
+              Contact No.: 7411286816
             </div>
             <div className={styles.eventDesc} dangerouslySetInnerHTML={this.createMarkup()} />
             <div className={styles.buttons}>

@@ -8,6 +8,7 @@ import { push } from 'react-router-redux';
 import { renderRoutes } from 'react-router-config';
 import { provideHooks } from 'redial';
 import Helmet from 'react-helmet';
+import { Footer } from 'components';
 import { isHomeLoaded as isHomeFilled, getEventsBycityId as fillHome } from 'redux/modules/home';
 import { isCityLoaded as isCityFilled, getCities as fillCities } from 'redux/modules/city';
 import { isLoaded as isAuthLoaded, load as loadAuth, logout } from 'redux/modules/auth';
@@ -101,7 +102,6 @@ export default class App extends Component {
     }));
   }
   render() {
-    console.log(this.state.city);
     const { route, location } = this.props;
     const styles = require('./App.scss');
     return (
@@ -115,7 +115,7 @@ export default class App extends Component {
             </div>
           </IndexLinkContainer>
           { location.pathname === "/" &&
-            <div>
+            <div className={styles.cityCont}>
               <div className={styles.oval} />
               <div className={styles.dDWrapper} onBlur={this.handleClickOutside}>
                 <div className={styles.dDHeader}>
