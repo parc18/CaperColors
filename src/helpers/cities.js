@@ -1,9 +1,14 @@
 module.exports = {
   0: 'All Cities',
-  1: 'New Delhi',
-  2: 'Haryana (Gurgaon)',
-  3: 'Uttar Pradesh (Ghaziabad)',
-  4: 'Uttar Pradesh (Noida)',
-  5: 'Bangalore',
-  6: 'Uttar Pradesh (Greater Noida)'
+  1: 'Delhi & NCR',
+  2: 'Bangalore',
+  3: 'Hyderabad',
+  4: 'Pune',
+  5: 'Kolkata',
+  6: 'Indore',
+  7: 'Bhopal',
+  8: 'Uttarakhand',
+  9: 'Jaipur',
+  10: 'Mumbai',
+  11: 'Chennai'
 };

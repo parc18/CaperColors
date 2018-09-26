@@ -8,7 +8,9 @@ import { push } from 'react-router-redux';
 import { renderRoutes } from 'react-router-config';
 import { provideHooks } from 'redial';
 import Helmet from 'react-helmet';
+import { Footer } from 'components';
 import { isHomeLoaded as isHomeFilled, getEventsBycityId as fillHome } from 'redux/modules/home';
+import { isCityLoaded as isCityFilled, getCities as fillCities } from 'redux/modules/city';
 import { isLoaded as isAuthLoaded, load as loadAuth, logout } from 'redux/modules/auth';
 import config from 'config';
 import city from '../../helpers/cities';
@@ -25,11 +27,16 @@ import city from '../../helpers/cities';
         await dispatch(fillHome(-1)).catch(() => null);
       }
     }
+    if (!isCityFilled(getState())) {
+        await dispatch(fillCities()).catch(() => null);
+    }
   }
 })
 @connect(
   state => ({
-    notifs: state.notifs
+    notifs: state.notifs,
+    home: state.home,
+    city: state.city
   }),
   { logout, pushState: push }
 )
@@ -45,8 +52,10 @@ export default class App extends Component {
     store: PropTypes.object.isRequired
   };
   state = {
-    currentCity: city[cookie.get('city')] || 'All Cities',
-    listOpen: false
+    currentCity: this.props.city[cookie.get('city')] || 'All Cities',
+    listOpen: false,
+    pageType: this.props.home.pageType,
+    city: this.props.city.data,
   };
   componentDidMount() {
     window.addEventListener('scroll', this.handleScroll);
@@ -93,7 +102,7 @@ export default class App extends Component {
     }));
   }
   render() {
-    const { route } = this.props;
+    const { route, location } = this.props;
     const styles = require('./App.scss');
     return (
       <div className={styles.app}>
@@ -105,42 +114,42 @@ export default class App extends Component {
               <img src="https://res.cloudinary.com/parc-india/image/upload/c_scale,w_29/v1528536871/mjbfldjaluptlybuzetr.png" alt="khelacademy logo" />{' '}
             </div>
           </IndexLinkContainer>
-          <div className={styles.oval} />
-          <div className={styles.dDWrapper} onBlur={this.handleClickOutside}>
-            <div className={styles.dDHeader}>
-              <div className="dd-header-title" onClick={() => this.toggleList()} role="presentation">
-                {this.state.currentCity}
-                {this.state.listOpen ? <i className={`${styles.arrow} fa }`}>&#xf106;</i> : <i className={`${styles.arrow} fa }`}>&#xf107;</i>}
+          { location.pathname === "/" &&
+            <div className={styles.cityCont}>
+              <div className={styles.oval} />
+              <div className={styles.dDWrapper} onBlur={this.handleClickOutside}>
+                <div className={styles.dDHeader}>
+                  <div className="dd-header-title" onClick={() => this.toggleList()} role="presentation">
+                    {this.state.currentCity}
+                    {this.state.listOpen ? <i className={`${styles.arrow} fa }`}>&#xf106;</i> : <i className={`${styles.arrow} fa }`}>&#xf107;</i>}
+                  </div>
+                </div>
+                {this.state.listOpen && (
+                  <ul className={styles.dDList}>
+                    <li className="dd-list-item" key={0} onClick={() => this.changeCity(0, 'All Cities')} role="presentation">
+                      {' '}
+                      All Cities
+                    </li>
+
+                    { Object.keys(this.state.city).map((index,item) => {
+                      if (typeof item !== 'undefined') {
+                        return (
+                          <li className="dd-list-item" key={index} onClick={() => this.changeCity(this.state.city[index].cityId, this.state.city[index].cityName)} role="presentation">
+                            {' '}
+                            {this.state.city[index].cityName}
+                          </li>
+                        );
+                      }
+                      return null;
+                    })}
+                  </ul>
+                )}
               </div>
             </div>
-            {this.state.listOpen && (
-              <ul className={styles.dDList}>
-                <li className="dd-list-item" onClick={() => this.changeCity(0, 'All Cities')} role="presentation">
-                  {' '}
-                  All Cities
-                </li>
-                <li className="dd-list-item" onClick={() => this.changeCity(1, 'New Delhi')} role="presentation">
-                  {' '}
-                  New Delhi
-                </li>
-                <li className="dd-list-item" onClick={() => this.changeCity(2, 'Haryana (Gurgaon)')} role="presentation">
-                  Haryana (Gurgaon)
-                </li>
-                <li className="dd-list-item" onClick={() => this.changeCity(3, 'Uttar Pradesh (Ghaziabad)')} role="presentation">
-                  Uttar Pradesh (Ghaziabad)
-                </li>
-                <li className="dd-list-item" onClick={() => this.changeCity(5, 'Bangalore')} role="presentation">
-                  Bangalore
-                </li>
-                <li className="dd-list-item" onClick={() => this.changeCity(4, 'Uttar Pradesh (Noida)')} role="presentation">
-                  Uttar Pradesh (Noida)
-                </li>
-                <li className="dd-list-item" onClick={() => this.changeCity(6, 'Uttar Pradesh (Greater Noida)')} role="presentation">
-                  Uttar Pradesh (Greater Noida)
-                </li>
-              </ul>
-            )}
-          </div>
+          }
+          { location.pathname !== "/" &&
+            <div className={styles.mainText}> Khelacademy </div>
+          }
         </header>
         <div className={styles.menuIcon} onClick={() => this.toggleMenu()} role="presentation">
           {' '}

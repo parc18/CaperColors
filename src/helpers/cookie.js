@@ -27,9 +27,7 @@ export const getCookie = cname => {
 
 export const checkCookie = cname => {
   const user = getCookie(cname);
-  console.log(user, 'fkc');
   if (user === '') {
-    console.log(user, 'fkc2');
     return false;
   }
   return true;

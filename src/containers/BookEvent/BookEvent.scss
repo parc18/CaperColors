@@ -1,3 +1,4 @@
+@import url(https://fonts.googleapis.com/css?family=Allerta);
 .container {
     max-width: 1200px;
     margin: auto;
@@ -15,7 +16,7 @@
       color: #898989;
     }
     .category {
-        font-family: -webkit-pictograph;;
+        font-family: 'Allerta', sans-serif;
         font-size: 14px;
         font-weight: bold;
         line-height: 16px;
@@ -32,7 +33,7 @@
 
 .catName {
     color: #000000;
-    font-family: "Lucida Grande";
+    font-family: 'Allerta', sans-serif;
     font-size: 16px;
     font-weight: bold;
     line-height: 18px;
@@ -56,13 +57,13 @@
 }
 .amount {
     color: #000000;
-    font-family: "Lucida Grande";
+    font-family: 'Allerta', sans-serif;
     font-size: 16px;
     line-height: 18px;
 }
 .ageDesc {
     color: #808080;
-    font-family: "Lucida Grande";
+    font-family: 'Allerta', sans-serif;
     font-size: 12px;
     line-height: 15px;
     margin-top: 10px;
@@ -103,7 +104,7 @@
     background: #ed6b0a;
     color: #fff;
     height: 50px;
-    font-family: "Lucida Grande";
+    font-family: 'Allerta', sans-serif;
     font-size: 14px;
     border: none;
     position: fixed;
@@ -115,34 +116,34 @@
     background: #ffffff;
     .name {
         color: #0B2340;
-        font-family: "Lucida Grande";
+        font-family: 'Allerta', sans-serif;
         font-size: 20px;
         line-height: 23px;
         margin-bottom: 8px;
     }
     .place {
         color: #0B2340;
-        font-family: "Lucida Grande";
+        font-family: 'Allerta', sans-serif;
         font-size: 10px;
         line-height: 14px;
         margin-bottom: 8px;
     }
     .timings {
         color: #0B2340;
-        font-family: "Lucida Grande";
+        font-family: 'Allerta', sans-serif;
         font-size: 10px;
         line-height: 14px;
         margin-bottom: 2px;
     }
     .payableAmount {
         color: #0B2340;
-        font-family: "Lucida Grande";
+        font-family: 'Allerta', sans-serif;
         font-size: 12px;
         font-weight: bold;
     }
     .money {
         color: #0B2340;
-        font-family: "Lucida Grande";
+        font-family: 'Allerta', sans-serif;
         font-size: 24px;
         line-height: 28px;
         font-weight: normal;
@@ -171,7 +172,7 @@
 }
 ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
     color: #5578A3;
-    font-family: "Lucida Grande";
+    font-family: 'Allerta', sans-serif;
     font-size: 12px;
 }
 .playerNamess {

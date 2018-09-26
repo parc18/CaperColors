@@ -1,3 +1,4 @@
+@import url(https://fonts.googleapis.com/css?family=Allerta);
 .container {
     max-width: 1200px;
     margin: auto;
@@ -19,14 +20,14 @@
     }
     .eventName {
         position: absolute;
-        top: 10px;
+        top: 14px;
         left: 10px;
         z-index: 1;
         height: 70px;
-        width: 179px;
+        width: 62%;
         color: #FFFFFF;
-        font-family: "Lucida Grande";
-        font-size: 30px;
+        font-family: 'Allerta', sans-serif;
+        font-size: 17px;
         line-height: 35px;
     }   
 }
@@ -48,16 +49,16 @@
     	    background: linear-gradient(180deg,rgba(0,0,0,0.3),rgba(0,0,0,.2) 80%,rgba(0,0,0,.1));
     	}
     	.eventName {
-    		position: absolute;
-    	    top: 10px;
-    	    left: 10px;
-    	    z-index: 1;
-    	    height: 70px;
-    	    width: 179px;
-    	    color: #FFFFFF;
-    	    font-family: "Lucida Grande";
-    	    font-size: 30px;
-    	    line-height: 35px;
+            position: absolute;
+            top: 14px;
+            left: 10px;
+            z-index: 1;
+            height: 70px;
+            width: 62%;
+            color: #FFFFFF;
+            font-family: 'Allerta', sans-serif;
+            font-size: 17px;
+            line-height: 35px;
     	}	
     }
 }
@@ -66,7 +67,7 @@
     background: #ffffff;
     color: #EF6C30;
     height: 50px;
-   	font-family: "Lucida Grande";
+   	font-family: 'Allerta', sans-serif;
    	font-size: 14px;
    	border: none;
 }
@@ -75,7 +76,7 @@
     background: #ed6b0a;
     color: #fff;
     height: 50px;
-   	font-family: "Lucida Grande";
+   	font-family: 'Allerta', sans-serif;
    	font-size: 14px;
    	border: none;
 }
@@ -100,7 +101,7 @@
     color: #0B2340;
     font-size: 12px;
     padding-top: 13px;
-    font-family: "Lucida Grande";
+    font-family: 'Allerta', sans-serif;
 }
 .bott {
 	border-bottom: 1px solid #e2e2e2;
@@ -120,7 +121,7 @@
     text-align: justify;
     text-justify: inter-word;
     padding-top: 10px;
-    font-family: "Lucida Grande";
+    font-family: 'Allerta', sans-serif;
     background-color: #F2F2F2;
 }
 

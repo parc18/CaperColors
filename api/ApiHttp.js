@@ -1,6 +1,6 @@
 const getJavaUrl = (context, params) => {
   // getJavaUrl
-  let url = 'https://capers.herokuapp.com/api';
+  let url = 'https://capers-dev.herokuapp.com/api';
   const accessToken = 'abc';
   switch (
     context // eslint-disable-line  default-case
@@ -23,6 +23,12 @@ const getJavaUrl = (context, params) => {
       break;
     case 'thankyou':
       url += `/payment_status?paymentId=${params}`;
+      break;
+    case 'cities':
+      url += '/cities';
+      break;
+    case 'sports':
+      url += '/sports';
       break;
     // no default
   }

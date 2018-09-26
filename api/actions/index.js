@@ -5,3 +5,5 @@ export * as home from './home';
 export * as bookevent from './bookevent';
 export * as payment from './payment';
 export * as thankyou from './thankyou';
+export * as city from './city';
+export * as sports from './sports';

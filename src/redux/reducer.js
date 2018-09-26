@@ -9,6 +9,8 @@ import home from './modules/home';
 import bookingPrices from './modules/bookevent';
 import payment from './modules/payment';
 import thankYouStatus from './modules/thankyou';
+import city from './modules/city';
+import sports from './modules/sports';
 
 export default function createReducers(asyncReducers) {
   return {
@@ -27,6 +29,8 @@ export default function createReducers(asyncReducers) {
     bookingPrices,
     payment,
     thankYouStatus,
+    city,
+    sports,
     ...asyncReducers
   };
 }
