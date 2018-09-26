@@ -102,7 +102,7 @@ export default class App extends Component {
           <IndexLinkContainer to="/">
             <div className={styles.imgLogo}>
               {' '}
-              <img src="http://res.cloudinary.com/parc-india/image/upload/c_scale,w_29/v1528536871/mjbfldjaluptlybuzetr.png" alt="khelacademy logo" />{' '}
+              <img src="https://res.cloudinary.com/parc-india/image/upload/c_scale,w_29/v1528536871/mjbfldjaluptlybuzetr.png" alt="khelacademy logo" />{' '}
             </div>
           </IndexLinkContainer>
           <div className={styles.oval} />
