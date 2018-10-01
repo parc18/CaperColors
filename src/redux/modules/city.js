@@ -39,6 +39,6 @@ export function isCityLoaded(globalState) {
 export function getCities() {
   return {
     types: [CITY_REQUEST, CITY_SUCCESS, CITY_FAILURE],
-    promise: ({ client }) => client.get(`city/getCities`)
+    promise: ({ client }) => client.get('city/getCities')
   };
 }

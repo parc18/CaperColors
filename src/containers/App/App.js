@@ -8,12 +8,11 @@ import { push } from 'react-router-redux';
 import { renderRoutes } from 'react-router-config';
 import { provideHooks } from 'redial';
 import Helmet from 'react-helmet';
-import { Footer } from 'components';
 import { isHomeLoaded as isHomeFilled, getEventsBycityId as fillHome } from 'redux/modules/home';
 import { isCityLoaded as isCityFilled, getCities as fillCities } from 'redux/modules/city';
 import { isLoaded as isAuthLoaded, load as loadAuth, logout } from 'redux/modules/auth';
 import config from 'config';
-import city from '../../helpers/cities';
+// import city from '../../helpers/cities';
 @provideHooks({
   fetch: async ({ store: { dispatch, getState } }) => {
     if (!isAuthLoaded(getState())) {
@@ -28,7 +27,7 @@ import city from '../../helpers/cities';
       }
     }
     if (!isCityFilled(getState())) {
-        await dispatch(fillCities()).catch(() => null);
+      await dispatch(fillCities()).catch(() => null);
     }
   }
 })
@@ -46,7 +45,8 @@ export default class App extends Component {
     route: PropTypes.objectOf(PropTypes.any).isRequired,
     location: PropTypes.objectOf(PropTypes.any).isRequired,
     logout: PropTypes.func.isRequired,
-    pushState: PropTypes.func.isRequired
+    pushState: PropTypes.func.isRequired,
+    city: PropTypes.objectOf(PropTypes.any).isRequired
   };
   static contextTypes = {
     store: PropTypes.object.isRequired
@@ -54,8 +54,8 @@ export default class App extends Component {
   state = {
     currentCity: this.props.city[cookie.get('city')] || 'All Cities',
     listOpen: false,
-    pageType: this.props.home.pageType,
-    city: this.props.city.data,
+    // pageType: this.props.home.pageType,
+    city: this.props.city.data
   };
   componentDidMount() {
     window.addEventListener('scroll', this.handleScroll);
@@ -114,7 +114,7 @@ export default class App extends Component {
               <img src="https://res.cloudinary.com/parc-india/image/upload/c_scale,w_29/v1528536871/mjbfldjaluptlybuzetr.png" alt="khelacademy logo" />{' '}
             </div>
           </IndexLinkContainer>
-          { location.pathname === "/" &&
+          {location.pathname === '/' && (
             <div className={styles.cityCont}>
               <div className={styles.oval} />
               <div className={styles.dDWrapper} onBlur={this.handleClickOutside}>
@@ -131,7 +131,7 @@ export default class App extends Component {
                       All Cities
                     </li>
 
-                    { Object.keys(this.state.city).map((index,item) => {
+                    {Object.keys(this.state.city).map((index, item) => {
                       if (typeof item !== 'undefined') {
                         return (
                           <li className="dd-list-item" key={index} onClick={() => this.changeCity(this.state.city[index].cityId, this.state.city[index].cityName)} role="presentation">
@@ -146,48 +146,62 @@ export default class App extends Component {
                 )}
               </div>
             </div>
-          }
-          { location.pathname !== "/" &&
-            <div className={styles.mainText}> Khelacademy </div>
-          }
+          )}
+          {location.pathname !== '/' && <div className={styles.mainText}> Khelacademy </div>}
         </header>
         <div className={styles.menuIcon} onClick={() => this.toggleMenu()} role="presentation">
           {' '}
-          {!this.state.menuOpen ? <i className={`${styles.faCaperMenu} ${styles.faCapermenuBar} ${styles.caperMenu}`} /> : <i className={`${styles.cross} fa }`}>&times;</i>}
-          {' '}
+          {!this.state.menuOpen ? <i className={`${styles.faCaperMenu} ${styles.faCapermenuBar} ${styles.caperMenu}`} /> : <i className={`${styles.cross} fa }`}>&times;</i>}{' '}
         </div>
-        <div className={styles.appContent}>
-          {renderRoutes(route.routes)}
-        </div>
-        {this.state.menuOpen &&
+        <div className={styles.appContent}>{renderRoutes(route.routes)}</div>
+        {this.state.menuOpen && (
           <div className={styles.overlay}>
             <div className={styles.NotlowerOveray}>
               <div className={styles.overlayContent}>
                 <div className={styles.oval2} />
-                <div className={styles.organiser}> Organizers  &nbsp; &nbsp; &nbsp; &#8594;</div>
+                <div className={styles.organiser}> Organizers &nbsp; &nbsp; &nbsp; &#8594;</div>
               </div>
               <div className={styles.overlayContent2}>
                 <div className={styles.oval2} />
-                <div className={styles.Sponsers}> Sponsers  &nbsp; &nbsp; &nbsp; &#8594;</div>
+                <div className={styles.Sponsers}> Sponsers &nbsp; &nbsp; &nbsp; &#8594;</div>
               </div>
               <IndexLinkContainer to="/about" onClick={() => this.toggleMenu()}>
-                <div className={styles.menuHeaderItems}> <div className={styles.ovalLast} /> About Us</div>
+                <div className={styles.menuHeaderItems}>
+                  {' '}
+                  <div className={styles.ovalLast} /> About Us
+                </div>
               </IndexLinkContainer>
               <IndexLinkContainer to="/vision" onClick={() => this.toggleMenu()}>
-                <div className={styles.menuHeaderItems}> <div className={styles.ovalLast} />Our Vision</div>
+                <div className={styles.menuHeaderItems}>
+                  {' '}
+                  <div className={styles.ovalLast} />
+                  Our Vision
+                </div>
               </IndexLinkContainer>
               <IndexLinkContainer to="/refund" onClick={() => this.toggleMenu()}>
-                <div className={styles.menuHeaderItems}> <div className={styles.ovalLast} />Cancellations and Refund Policy</div>
+                <div className={styles.menuHeaderItems}>
+                  {' '}
+                  <div className={styles.ovalLast} />
+                  Cancellations and Refund Policy
+                </div>
               </IndexLinkContainer>
               <IndexLinkContainer to="/privacy" onClick={() => this.toggleMenu()}>
-                <div className={styles.menuHeaderItems}> <div className={styles.ovalLast} />Privacy Policy</div>
+                <div className={styles.menuHeaderItems}>
+                  {' '}
+                  <div className={styles.ovalLast} />
+                  Privacy Policy
+                </div>
               </IndexLinkContainer>
               <IndexLinkContainer to="/terms" onClick={() => this.toggleMenu()}>
-                <div className={styles.menuHeaderItems}> <div className={styles.ovalLast} />Terms of Service</div>
+                <div className={styles.menuHeaderItems}>
+                  {' '}
+                  <div className={styles.ovalLast} />
+                  Terms of Service
+                </div>
               </IndexLinkContainer>
             </div>
           </div>
-        }
+        )}
       </div>
     );
   }

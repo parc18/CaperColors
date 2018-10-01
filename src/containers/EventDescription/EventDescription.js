@@ -15,8 +15,8 @@ export default class EventDescription extends Component {
     match: PropTypes.objectOf(PropTypes.any).isRequired
   };
   state = {
-    home: this.props.home.data[this.props.match.params.eventId],
-    pageType: "EDP"
+    home: this.props.home.data[this.props.match.params.eventId]
+    // pageType: 'EDP'
   };
   createMarkup() {
     return { __html: this.state.home.description };
@@ -48,7 +48,7 @@ export default class EventDescription extends Component {
             </div>
             <div className={styles.details}>
               <span className={styles.box} />
-              Contact No.: 7411286816
+              Contact No : {this.state.home.phone}
             </div>
             <div className={styles.eventDesc} dangerouslySetInnerHTML={this.createMarkup()} />
             <div className={styles.buttons}>
