@@ -7,6 +7,7 @@ import Helmet from 'react-helmet';
 import { connect } from 'react-redux';
 import { getEventsBycityIdandGameId as getSports } from 'redux/modules/home';
 import { getAllSports as getActiveSports } from 'redux/modules/sports';
+import Intro from './Intro.js';
 
 @connect(state => ({
   online: state.online,
@@ -41,6 +42,7 @@ export default class Home extends Component {
     const { home, sports } = this.props;
     const styles = require('./Home.scss');
     // require the logo image both from client and server
+    const events = home.data;
     return (
       <div>
         <div className={styles.home}>
@@ -50,13 +52,20 @@ export default class Home extends Component {
               <div className={`${styles.gameTypes} ${this.state.gameId === 0 ? styles.selectedGame : ''}`} role="presentation" onClick={() => this.selectSports(0)}>
                 All
               </div>
-                { sports && sports.data && typeof sports.data !== 'undefined' && Object.keys(sports.data).map((index,item) => {
+              {sports &&
+                sports.data &&
+                typeof sports.data !== 'undefined' &&
+                Object.keys(sports.data).map((index, item) => {
                   if (typeof item !== 'undefined') {
                     return (
-                      <div className={`${styles.gameTypes} key=${sports.data[index].sportsId} ${this.state.gameId === sports.data[index].sportsId ? styles.selectedGame : ''}`} role="presentation" onClick={() => this.selectSports(sports.data[index].sportsId)}>
+                      <div
+                        className={`${styles.gameTypes} key=${sports.data[index].sportsId} ${this.state.gameId === sports.data[index].sportsId ? styles.selectedGame : ''}`}
+                        role="presentation"
+                        onClick={() => this.selectSports(sports.data[index].sportsId)}
+                      >
                         {sports.data[index].sportsName}
                       </div>
-                    )
+                    );
                   }
                   return null;
                 })}
@@ -64,11 +73,12 @@ export default class Home extends Component {
           </div>
           <div>
             <div className={styles.container}>
+              <Intro />
               {home &&
                 typeof home !== 'undefined' &&
                 home.data &&
                 typeof home.data !== 'undefined' &&
-                Object.keys(home.data).map(item => {
+                Object.keys(events).map(item => {
                   if (typeof item !== 'undefined') {
                     return (
                       <Card
@@ -84,9 +94,9 @@ export default class Home extends Component {
                   }
                   return null;
                 })}
-            </div> 
+            </div>
           </div>
-        </div>  
+        </div>
       </div>
     );
   }
