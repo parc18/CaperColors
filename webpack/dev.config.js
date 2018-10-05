@@ -161,9 +161,6 @@ var webpackConfig = module.exports = {
         loader: 'babel-loader',
         exclude: /node_modules(\/|\\)(?!(@feathersjs))/,
         options: babelLoaderQuery
-      }, {
-        loader: 'eslint-loader',
-        options: { emitWarning: true }
       }
     ]),
     helpers.createHappyPlugin('less', [

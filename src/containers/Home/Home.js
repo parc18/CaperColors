@@ -6,6 +6,7 @@ import Helmet from 'react-helmet';
 import { connect } from 'react-redux';
 import { getEventsBycityIdandGameId as getSports } from 'redux/modules/home';
 import { getAllSports as getActiveSports } from 'redux/modules/sports';
+import Intro from './Intro.js';
 
 @connect(state => ({
   online: state.online,
@@ -40,6 +41,7 @@ export default class Home extends Component {
     const { home, sports } = this.props;
     const styles = require('./Home.scss');
     // require the logo image both from client and server
+    const events = home.data;
     return (
       <div>
         <div className={styles.home}>
@@ -71,11 +73,12 @@ export default class Home extends Component {
           </div>
           <div>
             <div className={styles.container}>
+              {/* <Intro /> */}
               {home &&
                 typeof home !== 'undefined' &&
                 home.data &&
                 typeof home.data !== 'undefined' &&
-                Object.keys(home.data).map(item => {
+                Object.keys(events).map(item => {
                   if (typeof item !== 'undefined') {
                     return (
                       <Card
