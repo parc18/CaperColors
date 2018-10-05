@@ -1,7 +1,7 @@
 const getJavaUrl = (context, params) => {
   // getJavaUrl
-  let url = 'https://capers-dev.herokuapp.com/api';
-  const accessToken = 'abc';
+  let url = process.env.ENV_URL;
+  const accessToken = 'NOT-NOW-BABY';
   switch (
     context // eslint-disable-line  default-case
   ) {
