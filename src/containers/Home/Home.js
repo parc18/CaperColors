@@ -73,7 +73,7 @@ export default class Home extends Component {
           </div>
           <div>
             <div className={styles.container}>
-              <Intro />
+              {/* <Intro /> */}
               {home &&
                 typeof home !== 'undefined' &&
                 home.data &&
