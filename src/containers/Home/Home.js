@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import cookie from 'js-cookie';
 import { Card } from 'components';
-import { Footer } from 'components';
 import Helmet from 'react-helmet';
 import { connect } from 'react-redux';
 import { getEventsBycityIdandGameId as getSports } from 'redux/modules/home';
@@ -59,7 +58,8 @@ export default class Home extends Component {
                   if (typeof item !== 'undefined') {
                     return (
                       <div
-                        className={`${styles.gameTypes} key=${sports.data[index].sportsId} ${this.state.gameId === sports.data[index].sportsId ? styles.selectedGame : ''}`}
+                        className={`${styles.gameTypes}
+                      key=${sports.data[index].sportsId} ${this.state.gameId === sports.data[index].sportsId ? styles.selectedGame : ''}`}
                         role="presentation"
                         onClick={() => this.selectSports(sports.data[index].sportsId)}
                       >

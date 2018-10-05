@@ -12,7 +12,7 @@ export default function home(state = initialState, action = {}) {
       return {
         ...state,
         homeLoading: true,
-        pageType: "HOME"
+        pageType: 'HOME'
       };
     case HOME_SUCCESS:
       return {

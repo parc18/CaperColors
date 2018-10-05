@@ -39,6 +39,6 @@ export function isSportsLoaded(globalState) {
 export function getAllSports() {
   return {
     types: [SPORTS_REQUEST, SPORTS_SUCCESS, SPORTS_FAILURE],
-    promise: ({ client }) => client.get(`sports/getSports`)
+    promise: ({ client }) => client.get('sports/getSports')
   };
 }
