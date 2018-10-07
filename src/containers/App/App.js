@@ -8,6 +8,7 @@ import { push } from 'react-router-redux';
 import { renderRoutes } from 'react-router-config';
 import { provideHooks } from 'redial';
 import Helmet from 'react-helmet';
+import ReactGA from 'react-ga';
 import { isHomeLoaded as isHomeFilled, getEventsBycityId as fillHome } from 'redux/modules/home';
 import { isCityLoaded as isCityFilled, getCities as fillCities } from 'redux/modules/city';
 import { isLoaded as isAuthLoaded, load as loadAuth, logout } from 'redux/modules/auth';
@@ -58,6 +59,8 @@ export default class App extends Component {
     city: this.props.city.data
   };
   componentDidMount() {
+    ReactGA.initialize('UA-127069494-1');
+    ReactGA.pageview(window.location.pathname + window.location.search);
     window.addEventListener('scroll', this.handleScroll);
   }
   componentDidUpdate(prevProps) {
