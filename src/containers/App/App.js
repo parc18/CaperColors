@@ -160,14 +160,8 @@ export default class App extends Component {
         {this.state.menuOpen && (
           <div className={styles.overlay}>
             <div className={styles.NotlowerOveray}>
-              <div className={styles.overlayContent}>
-                <div className={styles.oval2} />
-                <div className={styles.organiser}> Organizers &nbsp; &nbsp; &nbsp; &#8594;</div>
-              </div>
-              <div className={styles.overlayContent2}>
-                <div className={styles.oval2} />
-                <div className={styles.Sponsers}> Sponsers &nbsp; &nbsp; &nbsp; &#8594;</div>
-              </div>
+              <div className={styles.overlayContent} />
+              <div className={styles.overlayContent2} />
               <IndexLinkContainer to="/about" onClick={() => this.toggleMenu()}>
                 <div className={styles.menuHeaderItems}>
                   {' '}
