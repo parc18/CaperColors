@@ -6,7 +6,6 @@ import Helmet from 'react-helmet';
 import { connect } from 'react-redux';
 import { getEventsBycityIdandGameId as getSports } from 'redux/modules/home';
 import { getAllSports as getActiveSports } from 'redux/modules/sports';
-import Intro from './Intro.js';
 import Footer from '../Footer/Footer';
 
 @connect(state => ({
