@@ -51,6 +51,12 @@ export default class ThankYouPage extends Component {
           { this.state.thankYouStatus &&
             this.state.thankYouStatus.error && <div> Your tickets are on its way, you will get a SMS notification. Your transaction id is {txnId} </div>}
         </div>
+        <a href="http://bflit.com/">
+          <div className={styles.infoboxbflit}>
+            <img className={styles.thankyouImg} src="https://res.cloudinary.com/parc-india/image/upload/c_crop,h_400,w_583,x_181,y_0/v1537990552/bflit_cp7rja.jpg" alt="Bflit_image" />
+          </div>
+          <div className={styles.infoboxbflitContent}> Sponsored </div>
+        </a>
         <Link to="/">
           <button className={styles.nextButton}>Home &#8594;</button>
         </Link>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="120px" height="120px" viewBox="0 0 120 120" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.2 (67145) - http://www.bohemiancoding.com/sketch -->
+    <title>ic_organiser</title>
+    <desc>Created with Sketch.</desc>
+    <g id="ic_organiser" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <circle id="Oval" stroke="#EF6C30" stroke-width="10" cx="60" cy="32" r="19"></circle>
+        <path d="M82.6615742,69.6756046 C75.9119692,66.0541128 68.1958665,64 60,64 C33.490332,64 12,85.490332 12,112" id="Oval-Copy" stroke="#EF6C30" stroke-width="10" stroke-linecap="round"></path>
+        <circle id="Combined-Shape" fill="#0B2340" cx="88" cy="88" r="24"></circle>
+        <g id="Group" transform="translate(76.000000, 76.000000)">
+            <rect id="Rectangle" x="0" y="0" width="24" height="24"></rect>
+            <path d="M12,16.5 C13.3467953,16.5 14.6191857,16.1544588 15.748583,15.4975547 C16.8993989,14.8281925 17.8355058,13.8921207 18.4915586,12.7498578 C19.1429383,11.6157314 19.5,10.3139614 19.5,9 C19.5,7.67081177 19.1483119,6.37999839 18.4961654,5.24893587 C17.8441802,4.11815335 16.8893807,3.16569002 15.7486952,2.50405442 C14.6163158,1.84723654 13.3419905,1.5 12,1.5 C10.6675119,1.5 9.38013414,1.85053551 8.24939747,2.50356676 C7.12021233,3.15570197 6.16182543,4.11467611 5.5010368,5.25064065 C4.84454844,6.37921259 4.5,7.65036238 4.5,9 C4.5,10.327366 4.85232462,11.6200731 5.50398406,12.7513184 C6.16039138,13.8908057 7.10647704,14.8353831 8.24982705,15.4950907 C9.38360613,16.1492759 10.6680137,16.5 12,16.5 Z" id="Oval-4" stroke="#FFFFFF" stroke-width="1.5"></path>
+            <circle id="Oval-4-Copy" fill="#FFFFFF" cx="12" cy="9" r="4.5"></circle>
+            <polyline id="Path-2" stroke="#FFFFFF" stroke-width="1.5" points="7.5 15 7.5 22.5 12 19.9285714 16.5 22.5 16.5 15"></polyline>
+        </g>
+    </g>
+</svg>

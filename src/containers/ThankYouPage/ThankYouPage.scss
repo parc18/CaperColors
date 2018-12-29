@@ -8,7 +8,7 @@
   background: #FFFFFF;
   margin: 0 8px 8px 8px;
   background: #FFFFFF;
-  padding: 10px 10px;
+  padding: 40px 10px;
   color: #0B2340;
   font-family: "Lucida Grande";
   font-size: 12px;
@@ -25,4 +25,15 @@
   border: none;
   position: fixed;
   bottom: 0;
+}
+.infoboxbflit{
+  position: fixed;
+  bottom: 49px;
+}
+.infoboxbflitContent {
+  position: fixed;
+  bottom: 54px;
+  font-size: 10px;
+  color: #fff;
+  padding-left: 5px;
 }

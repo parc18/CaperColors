@@ -1,6 +1,6 @@
 // import { routerActions } from 'react-router-redux';
 // import { connectedReduxRedirect } from 'redux-auth-wrapper/history4/redirect';
-import { App, Home, NotFound, EventDescription, BookEvent, ThankYouPage, About, Vision, Refund, Privacy, Terms } from 'containers';
+import { App, Home, NotFound, EventDescription, BookEvent, ThankYouPage, About, Vision, Refund, Privacy, Terms, PreHome } from 'containers';
 
 // const isAuthenticated = connectedReduxRedirect({
 //   redirectPath: '/login',
@@ -21,7 +21,8 @@ const routes = [
   {
     component: App,
     routes: [
-      { path: '/', exact: true, component: Home },
+      { path: '/', exact: true, component: PreHome },
+      { path: '/events', exact: true, component: Home },
       { path: '/eventdetails/:eventId', component: EventDescription },
       { path: '/bookevent/:eventId', component: BookEvent },
       { path: '/thankyou', component: ThankYouPage },

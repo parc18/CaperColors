@@ -1,0 +1,461 @@
+.clear{
+    clear: both;
+}
+
+.tb-allevnts{
+            float: left;
+            color: #FFFFFF;
+            font-family: Aller;
+            font-size: 18px;
+            line-height: 20px;
+            margin: 20px;
+        }
+
+.tb-allevnts a{
+    text-decoration: none;
+    color: #FFFFFF;
+}
+
+.tb-options{
+            float: right;
+            color: #EF6C30;
+            font-family: Aller;
+            font-size: 18px;
+            line-height: 20px;
+            margin: 20px;
+        }
+
+.tb-options a{
+    text-decoration: none;
+    color: #EF6C30;
+}
+
+.tb-options a:hover{
+   background-color: #233953;
+}
+
+#cover{
+    width: 100%;
+    height: 540px;
+    background-color: #0B2340;
+    margin: 60px 0 0 0;
+    position: relative;
+}
+
+.eventdetails{
+    width: 900px;
+    margin: auto;
+    position: relative;
+    padding: 180px 0;
+}
+
+#coverImg{
+    height: 540px;
+    width: 100%;
+    object-fit: cover;
+    position: absolute;
+}
+
+.eventTitle{
+            color: #FFFFFF;
+            font-family: Aller;
+            font-size: 40px;
+            font-weight: bold;
+            line-height: 48px;
+            float: left;
+            margin: 0px 0 0 0;
+        }
+
+.eventPd{
+            color: #FFFFFF;
+            font-family: Aller;
+            font-size: 28px;
+            line-height: 30px;
+            float: left;
+            margin: 20px 0 0 0;
+}
+
+ #bookNow{
+            height: 50;
+            width: 170px;
+            background-color: #EF6C30;
+            margin: 40px 0 0 0;
+        }
+
+    
+        .btnText{
+            margin: 15px 0 15px 20px;
+            color: #FFFFFF;
+            font-family: Aller;
+            font-size: 18px;
+            font-weight: bold;
+            line-height: 21px;
+            float: left;
+        }
+        
+       .btnImg{
+            height: 30px;
+            float: right;
+            margin: 10px 20px 10px 0;
+            position: relative;
+        }
+
+
+        .grid{
+            display: grid;
+            grid-auto-columns: 1fr 1fr;
+            grid-template-rows: 160px 560px 160px 560px 160px 560px;
+            grid-template-areas: "aboutT aboutT"
+                                 "aboutC aboutG"
+                                 "bleagueT bleagueT"
+                                 "bleagueC bleagueG"
+                                 "morethanT morethanT"
+                                 "morethan1 morethan2"
+        }
+        
+        .aboutT{
+            grid-area: aboutT;
+            height: 160px;
+            background-color: white;
+        }
+        
+         .aboutC{
+            grid-area: aboutC;
+            height: 580px;
+            background-color: white;
+        }
+        
+         .aboutG{
+            grid-area: aboutG;
+            height: 580px;
+            background-color: white;
+        }
+        
+        .bleagueT{
+            grid-area: bleagueT;
+            height: 160px;
+            background-color: #F6F9FD;
+        }
+        
+         .bleagueC{
+            grid-area: bleagueC;
+            height: 580px;
+            background-color: #F6F9FD;
+        }
+        
+         .bleagueG{
+            grid-area: bleagueG;
+            height: 580px;
+            background-color: #F6F9FD;
+        }
+        
+        .moreThanT{
+            grid-area: morethanT;
+            height: 160px;
+            background-color: white;
+        }
+        
+         .moreThan1{
+            grid-area: morethan1;
+            height: 580px;
+            background-color: white;
+        }
+        
+         .moreThan2{
+            grid-area: morethan2;
+            height: 580px;
+            background-color: white;
+        }
+        
+        .sectionT{
+            width: 900px;
+            height: 160px;
+            margin: 0 auto;
+            font-family: Aller;
+            font-size: 48px;
+            font-weight: bold;
+            line-height: 60px;
+            color: #EF6C30;
+            padding-top: 40px;
+        }
+        
+        .sectionR{
+            width: 600px;
+            height: 580px;
+            float: right;
+            position: relative;
+        }
+        
+        .sectionL{
+            width: 600px;
+            height: 580px;
+            float: left;
+            position: relative;
+        }
+
+.bleagueBtn{
+    margin-top: 40px;
+}
+
+.sectionText{
+            width: 470px;
+            color: #565656;
+            font-family: Aller;
+            font-size: 20px;
+            line-height: 1.8em;
+            margin: 40px 0px 0 0;
+            float: left;
+        }
+        
+.sectionText2{
+            width: 470px;
+            color: #565656;
+            font-family: Aller;
+            font-style: italic;
+            font-weight: bold;
+            font-size: 20px;
+            line-height: 30px;
+            margin: 40px 0px 0 0;
+            float: left;
+        }
+
+.moreThanIc{
+    margin: 60px 40px 20px 0px;
+    float: left;
+}
+
+.moreThanText{
+    float: left;
+    font-family: Aller;
+    font-size: 32px;
+    font-weight: bold;
+    line-height: 38px;
+    color: #0B2340;
+    margin: 97px 0 0 0;
+}
+
+.learnMore{
+    height: 50;
+    width: 170px;
+    background-color: #0B2340;
+    margin: 20px 0 0 0;
+    float: left;
+}
+
+#mtLmBtn{
+    position: absolute;
+    bottom: 60px;
+}
+
+#topNmbr{
+    width: 100%;
+    height: 480px;
+    background-color: #0b2340;
+    margin-top: 100px;
+    margin-bottom: 100px;
+}
+
+#topNmbrCont{
+    width: 1200px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.nmbrElement{
+    float: left;
+    width: 300px;
+    margin: 180px 00;
+}
+
+.tnNmbr{
+    color: #EF6C30;
+    font-family: Aller;
+    font-size: 60px;
+    font-weight: bold;
+    line-height: 72px;
+    text-align: center;
+    margin: 0;
+}
+
+
+.tnText{
+	opacity: 0.5;
+    color: #FFFFFF;
+    font-family: Aller;
+    font-size: 30px;
+    font-weight: normal;
+    line-height: 36px;
+    text-align: center;
+    margin: 0;
+}
+
+
+#custReview{
+    width: 1200px;
+    margin: -60px auto;
+}
+
+.review{
+    width: 360px;
+    height: 480px;
+    border-top: 1px solid #cccccc;
+    border-bottom: 1px solid #cccccc;
+    float: left;
+    margin: 40px 20px 00 20px;
+    position: relative;
+}
+
+.custImg{
+    height: 100px;
+    margin: 40px 130px;
+    position: relative;
+}
+
+.custText{
+    text-align: center;
+    font-family: aller;
+    font-style: normal;
+    font-size: 16px;
+    color: #808080;
+    line-height: 2em;
+    margin: 0 20px;  
+}
+
+.custName{
+    text-align: center;
+    font-family: aller;
+    font-style: oblique;
+    font-size: 14px;
+    color: #565656;
+    position: absolute;
+    bottom: 20px;
+    width: 100%;
+}
+
+
+
+#footer{
+    width: 100%;
+    height: 700px;
+    margin-top: 150px;
+    background-color: #F6F9FD;
+    position: relative;
+}
+
+#footerContainer{
+    width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    font-size: 14px;
+    color: #cccccc;
+}
+
+#contactForm{
+    width: 760px;
+    height: 400px;
+    float: left;
+    margin: 80px 40px 0 0;
+    position: relative;
+}
+
+.titleText2{
+    font-family: aller;
+    font-size: 30px;
+    font-weight: bold;
+    color: #EF6C30;
+    line-height: 36px;
+    margin: 0;
+}
+
+input {
+    height: 50px;
+    width: 350px;
+    margin: 40px 30px 0 0;
+    float: left;
+}
+
+textarea{
+    width: 730px;
+    height: 100px;
+    margin: 30px 0 0 0;
+    resize: vertical;
+}
+input, textarea{
+    outline: none;
+    border: 1px solid #cccccc;
+    font-family: Aller;
+    font-size: 16px;
+    padding: 10px;
+}
+
+input:focus, textarea:focus{
+    border: 1px solid #0B2340;
+    transition: 0.5s;
+}
+
+input[type=button]{
+    background-color: #0B2340;
+    width: 170px;
+    color: white;
+    border: none;
+    outline: none;
+}
+
+::placeholder{
+    color: #808D9C;
+}
+
+#contactInfo{
+    width: 360px;
+    height: 400px;
+    float: left;
+    margin: 80px 0 0 20px;
+}
+
+.infoTitle{
+    font-family: aller;
+    font-size: 20px;
+    color: #EF6C30;
+    margin: 20px 0 0 0;
+}
+
+.infoText{
+    font-family: aller;
+    font-size: 16px;
+    line-height: 30px;
+    color: #565656;
+    margin: 15px 30px 0 0;
+}
+
+.socialIc{
+    height: 32px;
+    margin: 40px 30px 0 0;
+    float: left;
+}
+
+#footerBt{
+    height: 100px;
+    border-top: 1px solid #e5e5e5;
+    margin-top: 40px;
+}
+
+#footerBt1{
+    float: left;
+    font-family: aller;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    color: #cccccc;
+    margin-top: 30px;
+    float: left;
+}
+
+
+#footerBt2{
+    float: right;
+    font-family: aller;
+    font-style: normal;
+    font-size: 14px;
+    color: #cccccc;
+    margin-top: 30px;
+}

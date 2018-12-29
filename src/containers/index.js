@@ -7,6 +7,7 @@ export EventDescription from './EventDescription/EventDescription';
 export BookEvent from './BookEvent/BookEvent';
 export ThankYouPage from './ThankYouPage/ThankYouPage';
 export Terms from './Terms/Terms';
+export PreHome from './PreHome/PreHome';
 export Privacy from './Privacy/Privacy';
 export NotFound from './NotFound/NotFound';
 // export Register from './Register/Register';

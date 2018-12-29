@@ -1,10 +1,10 @@
-@import url(https://fonts.googleapis.com/css?family=Allerta);
 .container {
     max-width: 1200px;
-    margin: auto;
+    width : 50%;
 }
 
 .eventImgContainer {
+    width : 50%;
     position: relative;
     .eventDescImg {
         width: 100%;
@@ -26,16 +26,71 @@
         height: 70px;
         width: 62%;
         color: #FFFFFF;
-        font-family: 'Allerta', sans-serif;
         font-size: 17px;
         line-height: 35px;
     }   
 }
 
+.parentContainer{
+    display: inline-flex;
+    width: 100%;
+    padding: 0% 10%;
+}
+
+.buttonsBottom {
+    display: none;
+}
+.eventShareStickyBtn {
+    width: 25%;
+    background: #ffffff;
+    color: #EF6C30;
+    height: 50px;
+   	/* font-family: 'Allerta', sans-serif; */
+   	font-size: 14px;
+   	border: none;
+}
+.eventBookStickyBtn {
+    width: 75%;
+    background: #ed6b0a;
+    color: #fff;
+    height: 50px;
+   	/* font-family: 'Allerta', sans-serif; */
+   	font-size: 14px;
+   	border: none;
+}
+.buttonsTop {
+    display: block;
+    bottom: 0px;
+    width: 80%;
+    margin: auto;
+}
+
+.details {
+    width: auto;
+    width: auto;
+    position: relative;
+    background: #fff;
+    padding: 7% 10%;
+    color: #0B2340;
+    font-size: 14px;
+}
+.bott {
+	border-bottom: 1px solid #e2e2e2;
+}
 
 @media (max-width: 797px) {
+    .parentContainer{
+        display: block;
+        padding: 0%;
+    }
+    .container {
+        max-width: 1200px;
+        margin: auto;
+        width : 100%;
+    }
     .eventImgContainer {
-    	position: relative;
+        position: relative;
+        width : 100%;
     	.eventDescImg {
     		width: 100%;
     		height: 200px;
@@ -56,29 +111,24 @@
             height: 70px;
             width: 62%;
             color: #FFFFFF;
-            font-family: 'Allerta', sans-serif;
             font-size: 17px;
             line-height: 35px;
     	}	
     }
-}
-.eventShareStickyBtn {
-    width: 25%;
-    background: #ffffff;
-    color: #EF6C30;
-    height: 50px;
-   	font-family: 'Allerta', sans-serif;
-   	font-size: 14px;
-   	border: none;
-}
-.eventBookStickyBtn {
-    width: 75%;
-    background: #ed6b0a;
-    color: #fff;
-    height: 50px;
-   	font-family: 'Allerta', sans-serif;
-   	font-size: 14px;
-   	border: none;
+    .buttonsBottom {
+        display: block;
+        position: fixed;
+        bottom: 0px;
+        float: left;
+        width: 100%;
+        max-width: 1200px;
+    }
+    .buttonsTop{
+        display: none;
+    }
+    .details {
+        padding: 7% 15%;
+    }
 }
 .box {
     position: absolute;
@@ -88,47 +138,15 @@
 	opacity: 0.41;
 	background-color: #5578A3;
 }
-
-.details {
-    width: auto;
-    width: auto;
-    /* height: 21px; */
-    position: relative;
-    background: #fff;
-    padding-left: 12%;
-    /* margin-left: 1px; */
-    padding-bottom: 13px;
-    color: #0B2340;
-    font-size: 12px;
-    padding-top: 13px;
-    font-family: 'Allerta', sans-serif;
-}
-.bott {
-	border-bottom: 1px solid #e2e2e2;
-}
 .eventDesc {
-	 width: auto;
-    /* height: 21px; */
     position: relative;
-    background: #fff;
-    padding-left: 10px;
-    padding-right: 10px;
-    /* line-break: initial; */
-    /* margin-left: 1px; */
-    /* padding-bottom: 10px; */
-    color: #0B2340;
-    font-size: 12px;
+    background: #3a3939;
+    margin: 5% 10%;
+    color: #585858;
+    font-size: 15px;
     text-align: justify;
     text-justify: inter-word;
-    padding-top: 10px;
-    font-family: 'Allerta', sans-serif;
-    background-color: #F2F2F2;
-}
-
-.buttons {
-    position: fixed;
-    bottom: 0px;
-    float: left;
-    width: 100%;
-    max-width: 1200px;
+    padding: 10px 0px;
+    background-color: inherit;
+    line-height: 2;
 }

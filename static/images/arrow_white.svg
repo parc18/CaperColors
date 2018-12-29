@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.2 (67145) - http://www.bohemiancoding.com/sketch -->
+    <title>Forward arrow_white</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Forward-arrow_white" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <polyline id="Path-2" stroke="#FFFFFF" stroke-width="1.5" transform="translate(10.000000, 8.000000) rotate(-90.000000) translate(-10.000000, -8.000000) " points="6 6 10 10 14 6"></polyline>
+        <path d="M7.5,4.5 L7.5,11.5" id="Path-2-Copy" stroke="#FFFFFF" stroke-width="1.5" transform="translate(7.500000, 8.000000) rotate(-90.000000) translate(-7.500000, -8.000000) "></path>
+    </g>
+</svg>

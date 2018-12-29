@@ -14,7 +14,6 @@ const styles = require('./BookEvent.scss');
 const styles1 = require('../EventDescription/EventDescription.scss');
 
 let universalPlayerCount = 0;
-let fakeCounter = 1;
 
 @provideHooks({
   fetch: async ({ store: { dispatch }, match }) => {
@@ -168,19 +167,21 @@ export default class BookEvent extends Component {
   createInputFields = (number, identity, catId) => {
     const table = [];
     for (let i = 0; i < number; i += 1) {
-      fakeCounter += 1;
       if (catId >= 3 && catId <= 5) {
-        table.push(<div><div key={fakeCounter}>
-          <input type="text" className={`${identity} ${styles.players}`} placeholder="Player 1 Name" />
-        </div> <div key={fakeCounter * 4}>
-          <input type="text" className={`${identity} ${styles.players}`} placeholder="Player 2 Name" />
-        </div></div>);
+        table.push(<div>
+          <div key={i * 17}>
+            <input type="text" className={`${identity} ${styles.players}`} placeholder="Player 1 Name" />
+          </div>{' '}
+          <div key={i * 4}>
+            <input type="text" className={`${identity} ${styles.players}`} placeholder="Player 2 Name" />
+          </div>
+        </div>);
       } else if (catId === 6) {
-        table.push(<div key={fakeCounter}>
+        table.push(<div key={i * 97}>
           <input type="text" className={`${identity} ${styles.players}`} placeholder="Team Representative's Name" />
         </div>);
       } else {
-        table.push(<div key={fakeCounter}>
+        table.push(<div key={i * 101}>
           <input type="text" className={`${identity} ${styles.players}`} placeholder="Player Name" />
         </div>);
       }
@@ -265,8 +266,7 @@ export default class BookEvent extends Component {
               );
             }
             return null;
-          })
-        }
+          })}
       </div>
       <div className={styles.ctas}>
         <button className={styles1.eventShareStickyBtn} onClick={() => this.modifyPaymentDetails()}>
