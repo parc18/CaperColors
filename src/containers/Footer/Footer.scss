@@ -1,0 +1,86 @@
+.myFooter {
+    width: 100%;
+    height: 550px;
+    background-color: #f5f9fd;
+    position: relative;
+    display: inline-block;
+    font-family: Aller;
+
+    .khelacademyinfofooter{
+        color: darkgray;
+        padding: 5px;
+        font-size: 15px;
+        margin-top: 10px;
+        
+        .companyName, .companycerti{
+            width:50%;
+            float: left;
+        }
+        .companycerti{
+            text-align: right;
+        }
+    }
+    .contactAndAddress{
+        height: 80%;
+        padding: 5px;
+        margin: 5px;
+        border-bottom: 1px solid lightgray;
+        .contactUs {
+        width: 60%;
+        float: left;
+        padding: 20px;
+        margin-top: 50px;
+
+        .contactUsHeader {
+           color: #EF6C30;
+           font-size: 20px;
+           font-weight: bold;
+        }
+        .connectBtn{
+            width: 25%;
+            background: #ed6b0a;
+            color: #fff;
+            height: 50px;
+            font-size: 16px;
+            border: none;
+            margin-top: 30px;
+        }
+        .userDetails {
+            margin-top: 30px;
+            font-size: 18px;
+             .userName, .userEmail {
+                width: 45%;
+                height: 45px;
+                padding: 5px;
+             }
+             .userEmail {
+                margin-left: 20px;
+             }
+             .userMessage{
+                width: 93%;
+                margin-top: 30px;
+                height: 100px;
+             }
+        }
+    }
+    .userAddressDetails {
+        width: 40%;
+        float: left;
+        padding: 20px;
+        margin-top: 75px;
+
+         label{
+            color:#EF6C30;
+            font-size: 16px;
+            font-weight: normal;
+         }
+         .kaAddress, .kaPhoneNo, .kaEmail{
+            margin-top: 10px;
+         }
+         .infoElem{
+            margin-top:20px;
+         }
+    }
+    }
+    
+}

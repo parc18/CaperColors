@@ -7,6 +7,7 @@ import { connect } from 'react-redux';
 import { getEventsBycityIdandGameId as getSports } from 'redux/modules/home';
 import { getAllSports as getActiveSports } from 'redux/modules/sports';
 import Intro from './Intro.js';
+import Footer from '../Footer/Footer';
 
 @connect(state => ({
   online: state.online,
@@ -42,7 +43,7 @@ export default class Home extends Component {
     const styles = require('./Home.scss');
     // require the logo image both from client and server
     const events = home.data;
-    return (
+    return (  
       <div>
         <div className={styles.home}>
           <Helmet title="Home" />
@@ -97,6 +98,7 @@ export default class Home extends Component {
             </div>
           </div>
         </div>
+        <Footer />
       </div>
     );
   }
