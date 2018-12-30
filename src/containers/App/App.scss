@@ -13,7 +13,7 @@ html {
   height: 100%;
 }
 body {
-  background-color: #f6f6f6;
+  background-color: #FFFFFF;
   font-family: Aller;
 }
 .app {
@@ -44,6 +44,8 @@ body {
 .appContent {
   margin: 50px 0; // for fixed navbar
   position: relative;
+  background: #fff;
+  margin-bottom: 0;
 }
 
 .notifs {
@@ -65,14 +67,14 @@ body {
   border: none !important;
 }
 .head {
-  background-color: #0B2340;
+  background-color: #FFF;
   height: 60px;
   padding: 3px 10px;
   position: fixed;
   top: 0;
   width: 100%;
   z-index: 9;
-  /* font-family: 'Allerta', sans-serif; */
+  border-bottom: 1px solid #e2e2e2;
 }
 .imgLogo {
   float: left;
@@ -262,15 +264,22 @@ ul {
   border-radius: 15px;
 }
 .mainText{
-  color: #fff;
+  color: #0b2340;
   text-align: left;
   margin-top: 12px;
-  font-size: 19px;
+  font-size: 26px;
   margin-left: 44px;
+  font-weight: 600;
 }
 @media (min-width: 900px) {
   .cityCont {
     width: 300px;
     float: right;
   }
+.imgLogo {
+  float: left;
+  margin-top: 5px;
+  margin-left: 10%;
+  margin-right: 1%;
+}
 }

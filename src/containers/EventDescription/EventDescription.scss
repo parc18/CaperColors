@@ -39,6 +39,7 @@
 
 .buttonsBottom {
     display: none;
+
 }
 .eventShareStickyBtn {
     width: 25%;
@@ -49,30 +50,33 @@
    	font-size: 14px;
    	border: none;
 }
-.eventBookStickyBtn {
-    width: 75%;
-    background: #ed6b0a;
-    color: #fff;
-    height: 50px;
-   	/* font-family: 'Allerta', sans-serif; */
-   	font-size: 14px;
-   	border: none;
-}
+
 .buttonsTop {
     display: block;
     bottom: 0px;
     width: 80%;
     margin: auto;
+    .eventBookStickyBtn {
+        width: 90%;
+        background: #ed6b0a;
+        color: #fff;
+        height: 63px;
+        font-family: Aller;
+        font-size: 18px;
+        border: none;
+        margin: 1% 0 0% 6%;
+        border-radius: 31px;
+    }
 }
 
 .details {
     width: auto;
-    width: auto;
     position: relative;
     background: #fff;
-    padding: 7% 10%;
+    padding: 1% 10%;
     color: #0B2340;
-    font-size: 14px;
+    font-family: "Lucida Grande";
+    font-size: 18px;
 }
 .bott {
 	border-bottom: 1px solid #e2e2e2;
@@ -122,6 +126,17 @@
         float: left;
         width: 100%;
         max-width: 1200px;
+        .eventBookStickyBtn {
+            width: 100%;
+            background: #ed6b0a;
+            color: #fff;
+            height: 63px;
+            font-family: Aller;
+            font-size: 18px;
+            border: none;
+            margin: 0;
+            border-radius: 0;
+        }
     }
     .buttonsTop{
         display: none;
@@ -135,8 +150,15 @@
     left: 4%;
     height: 20px;
 	width: 20px;
-	opacity: 0.41;
-	background-color: #5578A3;
+}
+.eventNamebox {
+    left: 4%;
+    height: 35px;
+    color: #686868;
+    font-family: Aller;
+    font-size: 30px;
+    font-weight: bold;
+    line-height: 36px;
 }
 .eventDesc {
     position: relative;
@@ -149,4 +171,19 @@
     padding: 10px 0px;
     background-color: inherit;
     line-height: 2;
+}
+.custPad {
+    padding: 12px 0 8% 4%
+}
+.socialContainer {
+    padding: 8% 5%;
+    .social {
+        padding-right: 3%;
+    }
+}
+@media (min-width: 1281px) {
+  
+    .custPad {
+        padding: 12px 0 4% 4%
+    }
 }

@@ -1,20 +1,24 @@
 .myFooter {
     width: 100%;
-    height: 550px;
+    height: auto;
     background-color: #f5f9fd;
     position: relative;
     display: inline-block;
     font-family: Aller;
+    padding: 0px 7%;
 
     .khelacademyinfofooter{
         color: darkgray;
         padding: 5px;
         font-size: 15px;
         margin-top: 10px;
+        padding: 0 2.5%;
         
         .companyName, .companycerti{
             width:50%;
             float: left;
+            padding-top: 2%;
+            padding-bottom: 3%;
         }
         .companycerti{
             text-align: right;
@@ -24,7 +28,6 @@
         height: 80%;
         padding: 5px;
         margin: 5px;
-        border-bottom: 1px solid lightgray;
         .contactUs {
         width: 60%;
         float: left;
@@ -33,12 +36,12 @@
 
         .contactUsHeader {
            color: #EF6C30;
-           font-size: 20px;
+           font-size: 30px;
            font-weight: bold;
         }
         .connectBtn{
             width: 25%;
-            background: #ed6b0a;
+            background: #032342;
             color: #fff;
             height: 50px;
             font-size: 16px;
@@ -71,11 +74,12 @@
 
          label{
             color:#EF6C30;
-            font-size: 16px;
+            font-size: 20px;
             font-weight: normal;
          }
          .kaAddress, .kaPhoneNo, .kaEmail{
             margin-top: 10px;
+            font-size: 16px;
          }
          .infoElem{
             margin-top:20px;
@@ -83,4 +87,20 @@
     }
     }
     
+}
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: #e2e2e2;
+    font-size: 16px;
+    margin-top: 0;
+}
+.shareIt {
+    border-bottom: 1px solid #ebeced;
+    padding-bottom: 40px;
+}
+.allFooterLogos {
+    display: inline-block;
+    margin-left: 2%;
+    .imgFClass {
+        width: 35px;
+    }
 }

@@ -204,8 +204,6 @@ export default class PreHome extends Component {
               </p>
             </div>
           </div>
-
-          <div className={styles.clear} />
         </div>
         <Footer />
       </div>

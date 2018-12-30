@@ -38,14 +38,18 @@ export default class Footer extends Component {
               </div>
             </div>
             <div className={styles.shareItWith}>
-              {' '}
-              <button className={styles.connectBtn}>Connect</button>
+
             </div>
           </div>
         </div>
+        <div className={styles.shareIt}> 
+        	<a href="https://www.facebook.com/khelacademy/" target="_blank" className={styles.allFooterLogos}><img className={styles.imgFClass} src="https://res.cloudinary.com/parc-india/image/upload/v1546131232/facebook_ozccdx.svg" alt="venue_logo" /></a>
+        	<a href="https://www.instagram.com/khelacademy/" target="_blank" className={styles.allFooterLogos}><img className={styles.imgFClass} src="https://res.cloudinary.com/parc-india/image/upload/v1546131233/instagram_l0v3gl.svg" alt="venue_logo" /></a>
+        	<a href="https://web.whatsapp.com/send?text=https://www.khelacademy.com/" target="_blank" className={styles.allFooterLogos}><img className={styles.imgFClass} src="https://res.cloudinary.com/parc-india/image/upload/v1546131233/whatsapp_d7bguf.svg" alt="venue_logo" /></a>
+        </div>
         <div className={styles.khelacademyinfofooter}>
           <div className={styles.companyName}>Khel Academy</div>
-          <div className={styles.companycerti}>A 2018 all right reserved @khelacademy</div>
+          <div className={styles.companycerti}>&copy; 2019 khelacademy</div>
         </div>
       </div>
     );
