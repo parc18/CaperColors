@@ -39,28 +39,44 @@ export default class EventDescription extends Component {
                 <div className={styles.eventNamebox}>{this.state.home.eventName}</div>
               </div>
               <div className={`${styles.details}`}>
-                <span className={styles.box}><img src="https://res.cloudinary.com/parc-india/image/upload/v1546125232/address_t0jaac.png" alt="venue_logo" /> </span>
+                <span className={styles.box}>
+                  <img src="https://res.cloudinary.com/parc-india/image/upload/v1546125232/address_t0jaac.png" alt="venue_logo" />{' '}
+                </span>
                 {this.state.home.eventVenue}
               </div>
               <div className={`${styles.details}`}>
-                <span className={styles.box}><img src="https://res.cloudinary.com/parc-india/image/upload/v1546125233/calender_xcar5s.png" alt="venue_logo" /> </span>
+                <span className={styles.box}>
+                  <img src="https://res.cloudinary.com/parc-india/image/upload/v1546125233/calender_xcar5s.png" alt="venue_logo" />{' '}
+                </span>
                 {edpTime(this.state.home.date)}, {this.state.home.timings}
               </div>
               <div className={`${styles.details}`}>
-                <span className={styles.box}><img src="https://res.cloudinary.com/parc-india/image/upload/v1546125233/ticket_ayncwd.png" alt="venue_logo" /> </span>
+                <span className={styles.box}>
+                  <img src="https://res.cloudinary.com/parc-india/image/upload/v1546125233/ticket_ayncwd.png" alt="venue_logo" />{' '}
+                </span>
                 Rs {this.state.home.price} onwards
               </div>
               <div className={styles.details}>
-                <span className={styles.box}><img src="https://res.cloudinary.com/parc-india/image/upload/v1546125233/phone_dcmak4.png" alt="venue_logo" /> </span>
+                <span className={styles.box}>
+                  <img src="https://res.cloudinary.com/parc-india/image/upload/v1546125233/phone_dcmak4.png" alt="venue_logo" />{' '}
+                </span>
                 Contact No : {this.state.home.phone}
               </div>
               <div className={styles.socialContainer}>
                 <a href={`whatsapp://send?text=https://www.khelacademy.com/eventdetails/${this.state.home.eventId}`} data-action="share/whatsapp/share">
-                  <span className={styles.social}><img src="https://res.cloudinary.com/parc-india/image/upload/v1546123547/facebook_sbnwat.png" alt="venue_logo" /> </span>
+                  <span className={styles.social}>
+                    <img src="https://res.cloudinary.com/parc-india/image/upload/v1546123547/facebook_sbnwat.png" alt="venue_logo" />{' '}
+                  </span>
                 </a>
-                <span className={styles.social}><img src="https://res.cloudinary.com/parc-india/image/upload/v1546123547/whatsapp_hptzmq.png" alt="venue_logo" /> </span>
-                <span className={styles.social}><img src="https://res.cloudinary.com/parc-india/image/upload/v1546123547/twitter_nre5f7.png" alt="venue_logo" /> </span>
-                <span className={styles.social}><img src="https://res.cloudinary.com/parc-india/image/upload/v1546123547/instagram_eugbkr.png" alt="venue_logo" /> </span>
+                <span className={styles.social}>
+                  <img src="https://res.cloudinary.com/parc-india/image/upload/v1546123547/whatsapp_hptzmq.png" alt="venue_logo" />{' '}
+                </span>
+                <span className={styles.social}>
+                  <img src="https://res.cloudinary.com/parc-india/image/upload/v1546123547/twitter_nre5f7.png" alt="venue_logo" />{' '}
+                </span>
+                <span className={styles.social}>
+                  <img src="https://res.cloudinary.com/parc-india/image/upload/v1546123547/instagram_eugbkr.png" alt="venue_logo" />{' '}
+                </span>
               </div>
               <div className={styles.buttonsTop}>
                 <Link to={`/bookevent/${this.state.home.eventId}`}>
